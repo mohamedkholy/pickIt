@@ -12,7 +12,7 @@ class BrowseScreen extends StatelessWidget {
     "Electronics",
     "Clothing",
     "Books",
-    "Sports Equipment",
+    "Properties",
     "Toys",
   ];
   BrowseScreen({super.key});

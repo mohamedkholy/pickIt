@@ -10,7 +10,7 @@ class CategoryItem extends StatelessWidget {
     "Electronics": Assets.assetsImagesPngElectronics,
     "Clothing": Assets.assetsImagesPngClothing,
     "Books": Assets.assetsImagesPngBooks,
-    "Sports Equipment": Assets.assetsImagesPngSportsEquipment,
+    "Properties": Assets.assetsImagesPngProperties,
     "Toys": Assets.assetsImagesPngToys,
   };
   CategoryItem({super.key, required this.index});
