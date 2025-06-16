@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pickit/core/di/dependency_injection.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/browse/ui/browse_screen.dart';
 import 'package:pickit/features/chats/ui/chats_screen.dart';
 import 'package:pickit/features/home/ui/home_screen.dart';
-import 'package:pickit/features/item_details/ui/item_details.dart';
 import 'package:pickit/features/post_item/ui/post_item_screen.dart';
+import 'package:pickit/features/profile/logic/profile_cubit.dart';
 import 'package:pickit/features/profile/ui/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -51,7 +53,10 @@ class _MainScreenState extends State<MainScreen> {
           BrowseScreen(),
           PostItemScreen(),
           ChatsScreen(),
-          ProfileScreen(),
+          BlocProvider(
+            create: (context) => getIt<ProfileCubit>(),
+            child: ProfileScreen(),
+          ),
         ],
       ),
     );
