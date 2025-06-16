@@ -36,7 +36,16 @@ class PostItemScreen extends StatelessWidget {
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
                 SizedBox(height: 24.h),
-                MyDropdown(),
+                MyDropdown(
+                  items: [
+                    "Furniture",
+                    "Electronics",
+                    "Clothing",
+                    "Books",
+                    "Properties",
+                    "Toys",
+                  ],
+                ),
                 SizedBox(height: 24.h),
                 MyTextFormField(
                   hint: "Description",
