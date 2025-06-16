@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/browse/ui/browse_screen.dart';
+import 'package:pickit/features/chats/ui/chats_screen.dart';
 import 'package:pickit/features/home/ui/home_screen.dart';
 import 'package:pickit/features/item_details/ui/item_details.dart';
 import 'package:pickit/features/post_item/ui/post_item_screen.dart';
@@ -39,7 +40,7 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'browse'),
           BottomNavigationBarItem(icon: Icon(Icons.sell), label: 'Sell'),
-          BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Messages'),
+          BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Chats'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
@@ -49,7 +50,7 @@ class _MainScreenState extends State<MainScreen> {
           HomeScreen(),
           BrowseScreen(),
           PostItemScreen(),
-          HomeScreen(),
+          ChatsScreen(),
           ProfileScreen(),
         ],
       ),
