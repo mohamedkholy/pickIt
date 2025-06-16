@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pickit/core/routing/routes.dart';
+import 'package:pickit/features/chat/ui/chat_screen.dart';
 import 'package:pickit/features/home/ui/home_screen.dart';
 import 'package:pickit/features/main/main_screen.dart';
 
@@ -12,6 +13,8 @@ abstract class AppRouter {
         return MaterialPageRoute(builder: (context) => MainScreen());
       case Routes.home:
         return MaterialPageRoute(builder: (context) => HomeScreen());
+      case Routes.chat:
+        return MaterialPageRoute(builder: (context) => ChatScreen());
       default:
         return null;
     }
