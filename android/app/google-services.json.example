@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "725919250796",
+    "project_id": "pickit-7a353",
+    "storage_bucket": "pickit-7a353.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725919250796:android:6caa55351b8fa94db45b49",
+        "android_client_info": {
+          "package_name": "com.dev3mk.pickit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "FIREBASE_API_KEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
