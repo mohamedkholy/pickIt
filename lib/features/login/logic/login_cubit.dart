@@ -1,15 +1,31 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pickit/features/login/data/repos/login_repo.dart';
 import 'package:pickit/features/login/logic/login_state.dart';
 
 @injectable
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginInitial());
+  final LoginRepo _loginRepo;
+  LoginCubit(this._loginRepo) : super(LoginInitial());
 
-  void login(String email, String password) {
+  Future<void> loginWithEmailAndPassword(String email, String password) async {
     emit(LoginLoading());
-    // TODO: Implement login logic
-    emit(LoginSuccess());
+    final result = await _loginRepo.loginWithEmailAndPassword(email, password);
+    if (result) {
+      emit(LoginSuccess());
+    } else {
+      emit(LoginFailure("Failed to login"));
+    }
+  }
+
+  Future<void> loginWithGoogle() async {
+    emit(LoginLoading());
+    final result = await _loginRepo.loginWithGoogle();
+    if (result) {
+      emit(LoginSuccess());
+    } else {
+      emit(LoginFailure("Failed to login"));
+    }
   }
 
 

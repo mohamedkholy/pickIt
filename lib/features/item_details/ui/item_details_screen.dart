@@ -3,9 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
+import 'package:pickit/core/widgets/my_button.dart';
 
-class ItemDetails extends StatelessWidget {
-  const ItemDetails({super.key});
+class ItemDetailsScreen extends StatelessWidget {
+  const ItemDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -89,35 +90,12 @@ class ItemDetails extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        MaterialButton(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 12.h,
-                            horizontal: 20.w,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.r),
-                          ),
-                          color: MyColors.primaryColor,
+                        MyButton(onPressed: () {}, text: "Message"),
+                        MyButton(
                           onPressed: () {},
-                          child: Text(
-                            "Message",
-                            style: MyTextStyles.font16WhiteBold,
-                          ),
-                        ),
-                        MaterialButton(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 12.h,
-                            horizontal: 20.w,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.r),
-                          ),
+                          text: "Buy Now",
+                          textStyle: MyTextStyles.font16BlackBold,
                           color: MyColors.secondaryColor,
-                          onPressed: () {},
-                          child: Text(
-                            "Buy Now",
-                            style: MyTextStyles.font16BlackBold,
-                          ),
                         ),
                       ],
                     ),
