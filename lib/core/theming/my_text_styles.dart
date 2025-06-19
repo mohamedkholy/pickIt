@@ -15,6 +15,12 @@ abstract class MyTextStyles {
     color: Color(0xff994D52),
   );
 
+  static TextStyle font14BrownBold = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Color(0xff994D52),
+  );
+
   static TextStyle font14BlackRegular = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.regular,

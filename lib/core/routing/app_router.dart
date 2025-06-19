@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pickit/core/di/dependency_injection.dart';
 import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/features/chat/ui/chat_screen.dart';
 import 'package:pickit/features/home/ui/home_screen.dart';
+import 'package:pickit/features/login/logic/login_cubit.dart';
+import 'package:pickit/features/login/ui/login_screen.dart';
 import 'package:pickit/features/main/main_screen.dart';
 
 abstract class AppRouter {
@@ -15,6 +19,13 @@ abstract class AppRouter {
         return MaterialPageRoute(builder: (context) => HomeScreen());
       case Routes.chat:
         return MaterialPageRoute(builder: (context) => ChatScreen());
+      case Routes.login:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: LoginScreen(),
+          ),
+        );
       default:
         return null;
     }
