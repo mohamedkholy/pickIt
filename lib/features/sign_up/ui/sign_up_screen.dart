@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/helpers/validators.dart';
 import 'package:pickit/core/routing/routes.dart';
@@ -9,39 +9,39 @@ import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/core/widgets/my_text_form_field.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Log in", style: MyTextStyles.font18BlackBold),
+        title: Text("Sign up", style: MyTextStyles.font18BlackBold),
         centerTitle: true,
       ),
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
           child: Form(
-            key: _formKey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 MyTextFormField(
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Email is required";
                     }
-                    if (!Validators.isValidEmail(value)) {
+                    if (!Validators.isValidEmail(value)) {    
                       return "Invalid email format";
                     }
                     return null;
@@ -65,13 +65,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   hint: "Password",
                   isPassword: true,
                 ),
-                SizedBox(height: 12.h),
-                GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    "Forgot password?",
-                    style: MyTextStyles.font14BrownRegular,
-                  ),
+                SizedBox(height: 24.h),
+                MyTextFormField(
+                  controller: _confirmPasswordController,
+                  hint: "Confirm password",
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Confirm password is required";
+                    }
+                    if (value != _passwordController.text) {
+                      return "Passwords do not match";
+                    }
+                    return null;
+                  },
+                  maxLines: 1,
+                  isPassword: true,
                 ),
                 SizedBox(height: 24.h),
                 MaterialButton(
@@ -86,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       // TODO: Implement login logic
                     }
                   },
-                  child: Text("Log in", style: MyTextStyles.font16WhiteBold),
+                  child: Text("Sign up", style: MyTextStyles.font16WhiteBold),
                 ),
                 SizedBox(height: 12.h),
                 Align(
@@ -95,16 +103,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: "Don't have an account?",
+                          text: "Already have an account?",
                           style: MyTextStyles.font14BrownRegular,
                         ),
                         TextSpan(
                           recognizer:
                               TapGestureRecognizer()
                                 ..onTap = () {
-                                  Navigator.pushNamed(context, Routes.signup);
+                                  Navigator.pop(context);
                                 },
-                          text: " Sign up",
+                          text: " Log in",
                           style: MyTextStyles.font14BrownBold,
                         ),
                       ],
@@ -144,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Align(
                           alignment: AlignmentDirectional.center,
                           child: Text(
-                            "Login with Google",
+                            "Sign up with Google",
                             style: MyTextStyles.font14BrownBold,
                           ),
                         ),
@@ -175,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Align(
                           alignment: AlignmentDirectional.center,
                           child: Text(
-                            "Login with Facebook",
+                            "Sign up with Facebook",
                             style: MyTextStyles.font14BrownBold,
                           ),
                         ),
