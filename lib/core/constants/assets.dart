@@ -26,6 +26,10 @@ class Assets {
   /// assets/images/png/profile.png
   static const String assetsImagesPngProfile = "assets/images/png/profile.png";
 
+  /// Assets for assetsImagesPngProfileAvatar
+  /// assets/images/png/profile_avatar.png
+  static const String assetsImagesPngProfileAvatar = "assets/images/png/profile_avatar.png";
+
   /// Assets for assetsImagesPngProperties
   /// assets/images/png/Properties.png
   static const String assetsImagesPngProperties = "assets/images/png/Properties.png";

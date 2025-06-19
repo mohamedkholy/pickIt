@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/constants/assets.dart';
+import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
-import 'package:pickit/features/item_details/ui/item_details.dart';
 
 class SellItem extends StatelessWidget {
   const SellItem({super.key});
@@ -11,10 +11,7 @@ class SellItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ItemDetails()),
-        );
+        Navigator.pushNamed(context, Routes.itemDetails);
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 16.h),

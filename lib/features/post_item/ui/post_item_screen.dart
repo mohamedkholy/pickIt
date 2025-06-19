@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
+import 'package:pickit/core/widgets/my_button.dart';
 import 'package:pickit/core/widgets/my_dropdown.dart';
 import 'package:pickit/core/widgets/my_text_form_field.dart';
 
@@ -97,15 +98,10 @@ class PostItemScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 24.h),
-                MaterialButton(
+                MyButton(
                   minWidth: double.infinity,
-                  padding: EdgeInsetsDirectional.symmetric(vertical: 12.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.r),
-                  ),
-                  color: MyColors.primaryColor,
                   onPressed: () {},
-                  child: Text("Post Item", style: MyTextStyles.font16WhiteBold),
+                  text: "Post Item",
                 ),
               ],
             ),
