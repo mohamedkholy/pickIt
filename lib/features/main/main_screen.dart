@@ -6,6 +6,7 @@ import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/browse/ui/browse_screen.dart';
 import 'package:pickit/features/chats/ui/chats_screen.dart';
 import 'package:pickit/features/home/ui/home_screen.dart';
+import 'package:pickit/features/post_item/logic/post_item_cubit.dart';
 import 'package:pickit/features/post_item/ui/post_item_screen.dart';
 import 'package:pickit/features/profile/logic/profile_cubit.dart';
 import 'package:pickit/features/profile/ui/profile_screen.dart';
@@ -51,7 +52,10 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           HomeScreen(),
           BrowseScreen(),
-          PostItemScreen(),
+          BlocProvider(
+            create: (context) => getIt<PostItemCubit>(),
+            child: PostItemScreen(),
+          ),
           ChatsScreen(),
           BlocProvider(
             create: (context) => getIt<ProfileCubit>(),

@@ -4,7 +4,8 @@ import 'package:pickit/core/theming/my_text_styles.dart';
 
 class MyDropdown extends StatelessWidget {
   final List<String> items;
-  const MyDropdown({super.key, required this.items});
+  final TextEditingController controller;
+  const MyDropdown({super.key, required this.items, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,9 @@ class MyDropdown extends StatelessWidget {
         ),
       ),
       width: double.infinity,
-      onSelected: (value) {},
+      onSelected: (value) {
+        controller.text = value ?? "";
+      },
       dropdownMenuEntries: [
         for (var item in items) DropdownMenuEntry(value: item, label: item),
       ],
