@@ -106,7 +106,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                     Text("Location", style: MyTextStyles.font18BlackBold),
                     SizedBox(height: 16.h),
                     Text(
-                      "Cairo, Egypt",
+                      widget.item.city,
                       style: MyTextStyles.font16BlackRegular,
                     ),
                     SizedBox(height: 24.h),
@@ -116,28 +116,22 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                       children: [
                         CircleAvatar(
                           radius: 28.r,
-                          backgroundImage: const AssetImage(
-                            Assets.assetsImagesPngUser,
-                          ),
+                          backgroundImage:
+                              widget.item.sellerImageUrl != null
+                                  ? CachedNetworkImageProvider(
+                                    widget.item.sellerImageUrl!,
+                                  )
+                                  : const AssetImage(
+                                    Assets.assetsImagesPngProfileAvatar,
+                                  ),
                         ),
                         SizedBox(width: 8.w),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "John Doe",
-                              style: MyTextStyles.font16BlackBold,
-                            ),
-                            Text(
-                              "Joined 2021",
-                              style: MyTextStyles.font14BrownRegular,
-                            ),
-                          ],
+                        Text(
+                          widget.item.sellerName,
+                          style: MyTextStyles.font16BlackBold,
                         ),
                         const Spacer(),
-                        MyButton(onPressed: () {
-                          
-                        }, text: "Message"),
+                        MyButton(onPressed: () {}, text: "Message"),
                       ],
                     ),
                     SizedBox(height: 24.h),

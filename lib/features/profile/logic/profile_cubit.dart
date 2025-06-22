@@ -25,17 +25,12 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  Future<String?> getProfilePic() async {
+  String? getProfilePic() {
     final user = FirebaseAuth.instance.currentUser;
-    if (user == null) {
+    if (user == null || user.photoURL == null) {
       return null;
     }
-    final userDoc =
-        await FirebaseFirestore.instance
-            .collection(FirestoreConstants.usersCollection)
-            .doc(user.uid)
-            .get();
-    return userDoc.data()?["profilePic"] as String?;
+    return user.photoURL;
   }
 
   Future<void> uploadProfilePic(String path) async {
@@ -54,6 +49,7 @@ class ProfileCubit extends Cubit<ProfileState> {
           .collection(FirestoreConstants.usersCollection)
           .doc(user.uid)
           .set({"profilePic": url});
+      await user.updatePhotoURL(url);
       emit(UploadedProfilePic(url: url));
     } catch (e) {
       emit(UploadProfilePicError(error: "Something went wrong"));

@@ -36,30 +36,25 @@ class _ProfilePictureState extends State<ProfilePicture> {
                     ),
                   );
                 }
-                return FutureBuilder(
-                  future: cubit.getProfilePic(),
-                  builder: (context, snapshot) {
-                    return snapshot.data == null
-                        ? ClipRRect(
-                          borderRadius: BorderRadius.circular(128.r),
-                          child: Image.asset(
-                            width: 128.w,
-                            height: 128.h,
-                            Assets.assetsImagesPngProfileAvatar,
-                            fit: BoxFit.cover,
-                          ),
-                        )
-                        : ClipRRect(
-                          borderRadius: BorderRadius.circular(128.r),
-                          child: CachedNetworkImage(
-                            imageUrl: snapshot.data!,
-                            width: 128.w,
-                            height: 128.h,
-                            fit: BoxFit.cover,
-                          ),
-                        );
-                  },
-                );
+                return cubit.getProfilePic() == null
+                    ? ClipRRect(
+                      borderRadius: BorderRadius.circular(128.r),
+                      child: Image.asset(
+                        width: 128.w,
+                        height: 128.h,
+                        Assets.assetsImagesPngProfileAvatar,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                    : ClipRRect(
+                      borderRadius: BorderRadius.circular(128.r),
+                      child: CachedNetworkImage(
+                        imageUrl: cubit.getProfilePic()!,
+                        width: 128.w,
+                        height: 128.h,
+                        fit: BoxFit.cover,
+                      ),
+                    );
               },
             ),
             Align(
@@ -77,6 +72,7 @@ class _ProfilePictureState extends State<ProfilePicture> {
                 child: CircleAvatar(
                   radius: 16.r,
                   backgroundColor: MyColors.primaryColor,
+                  // ignore: prefer_const_constructors
                   child: Icon(Icons.edit, color: MyColors.secondaryColor),
                 ),
               ),

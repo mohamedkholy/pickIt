@@ -15,6 +15,7 @@ import 'package:pickit/features/post_item/data/models/item.dart';
 import 'package:pickit/features/post_item/logic/post_item_cubit.dart';
 import 'package:pickit/features/post_item/logic/post_item_state.dart';
 import 'package:pickit/features/post_item/ui/widgets/add_photos_layout.dart';
+import 'package:pickit/features/post_item/ui/widgets/city_autocomplete.dart';
 import 'package:pickit/features/post_item/ui/widgets/item_image.dart';
 
 class PostItemScreen extends StatefulWidget {
@@ -29,19 +30,30 @@ class _PostItemScreenState extends State<PostItemScreen> {
   final TextEditingController _priceController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _categoryController = TextEditingController();
+  final TextEditingController _cityController = TextEditingController();
   final List<String> _photos = [];
   late final PostItemCubit _postItemCubit = context.read<PostItemCubit>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final ImagePicker _imagePicker = ImagePicker();
 
   @override
+  void dispose() {
+    _titleController.dispose();
+    _priceController.dispose();
+    _descriptionController.dispose();
+    _categoryController.dispose();
+    _cityController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<PostItemCubit, PostItemState>(
       listener: (context, state) {
         if (state is PostItemSuccess) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text("Item posted successfully")));
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Item posted successfully")),
+          );
           _titleController.clear();
           _priceController.clear();
           _descriptionController.clear();
@@ -60,7 +72,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
             context: context,
             barrierDismissible: false,
             builder:
-                (context) => PopScope(
+                (context) => const PopScope(
                   canPop: false,
 
                   child: Center(
@@ -124,7 +136,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
                     SizedBox(height: 24.h),
                     MyDropdown(
                       controller: _categoryController,
-                      items: [
+                      items: const [
                         "Furniture",
                         "Electronics",
                         "Clothing",
@@ -133,6 +145,8 @@ class _PostItemScreenState extends State<PostItemScreen> {
                         "Toys",
                       ],
                     ),
+                    SizedBox(height: 24.h),
+                    CityAutocomplete(controller: _cityController),
                     SizedBox(height: 24.h),
                     MyTextFormField(
                       validator: (value) {
@@ -187,7 +201,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
                                 color: MyColors.secondaryColor,
                                 borderRadius: BorderRadius.circular(8.r),
                               ),
-                              child: Icon(Icons.add, color: Colors.black),
+                              child: const Icon(Icons.add, color: Colors.black),
                             ),
                           ),
                         ],
@@ -198,7 +212,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
                       onPressed: () {
                         if (_photos.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text("Please add at least one photo"),
                             ),
                           );
@@ -206,7 +220,17 @@ class _PostItemScreenState extends State<PostItemScreen> {
                         }
                         if (_categoryController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Please select a category")),
+                            const SnackBar(
+                              content: Text("Please select a category"),
+                            ),
+                          );
+                          return;
+                        }
+                        if (_cityController.text.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Please select a city"),
+                            ),
                           );
                           return;
                         }
@@ -218,6 +242,10 @@ class _PostItemScreenState extends State<PostItemScreen> {
                               category: _categoryController.text,
                               description: _descriptionController.text,
                               photos: _photos,
+                              sellerId: _postItemCubit.getUserID(),
+                              sellerName: _postItemCubit.getUserName(),
+                              sellerImageUrl: _postItemCubit.getUserImageUrl(),
+                              city: _cityController.text, 
                             ),
                           );
                         }
@@ -234,7 +262,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
     );
   }
 
- void addPhotos(List<String> photos) {
+  void addPhotos(List<String> photos) {
     setState(() {
       for (var i = 0; i < photos.length; i++) {
         if (_photos.length == 5) {
