@@ -1,0 +1,84 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pickit/core/di/dependency_injection.dart';
+import 'package:pickit/core/theming/my_text_styles.dart';
+import 'package:pickit/features/browse/logic/browse_cubit.dart';
+import 'package:pickit/features/browse/ui/browse_screen.dart';
+import 'package:pickit/features/chats/ui/chats_screen.dart';
+import 'package:pickit/features/home/ui/home_screen.dart';
+import 'package:pickit/features/main/logic/main_cubit.dart';
+import 'package:pickit/features/main/logic/main_state.dart';
+import 'package:pickit/features/post_item/logic/post_item_cubit.dart';
+import 'package:pickit/features/post_item/ui/post_item_screen.dart';
+import 'package:pickit/features/profile/logic/profile_cubit.dart';
+import 'package:pickit/features/profile/ui/profile_screen.dart';
+
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
+  late final MainCubit cubit = context.read<MainCubit>();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<MainCubit, MainState>(
+      listener: (context, state) {
+        if (state.selectedIndex == 1) {
+          setState(() {
+            _selectedIndex = 1;
+          });
+        }
+      },
+      child: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          iconSize: 24.h,
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: const Color(0xff994D52),
+          selectedLabelStyle: MyTextStyles.font12MediumBlack,
+          unselectedLabelStyle: MyTextStyles.font12MediumBlack.copyWith(
+            color: const Color(0xff994D52),
+          ),
+          onTap: (value) {
+            setState(() {
+              _selectedIndex = value;
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'browse'),
+            BottomNavigationBarItem(icon: Icon(Icons.sell), label: 'Sell'),
+            BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Chats'),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          ],
+        ),
+        body: IndexedStack(
+          index: _selectedIndex,
+          children: [
+            const HomeScreen(),
+            BlocProvider(
+              create: (context) => getIt<BrowseCubit>(),
+              child: BrowseScreen(category: cubit.state.category),
+            ),
+            BlocProvider(
+              create: (context) => getIt<PostItemCubit>(),
+              child: const PostItemScreen(),
+            ),
+            const ChatsScreen(),
+            BlocProvider(
+              create: (context) => getIt<ProfileCubit>(),
+              child: const ProfileScreen(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

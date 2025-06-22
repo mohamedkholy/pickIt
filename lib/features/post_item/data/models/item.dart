@@ -27,12 +27,14 @@ class Item {
 
 
   factory Item.fromJson(Map<String, dynamic> json) {
+    final photos = json['photos'] as List<dynamic>;
+    final List<String> photoList = photos.map((photo) => photo.toString()).toList();
     return Item(
       title: json['title'],
       price: json['price'],
       category: json['category'],
       description: json['description'],
-      photos: json['photos'] as List<String>,
+      photos: photoList,
     );
   } 
 
