@@ -50,4 +50,18 @@ class PostItemRepo {
       return null;
     }
   }
+
+  String getUserID() {
+    return _user.uid;
+  }
+
+  String getUserName() {
+    return _user.displayName ?? "";
+  }
+
+  String getUserImageUrl() {
+    return _user.photoURL ?? "";
+  }
+
+  
 }

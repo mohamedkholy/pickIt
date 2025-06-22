@@ -12,6 +12,8 @@ class MyTextFormField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final int? maxLines;
   final bool isPassword;
+  final FocusNode? focusNode;
+  final Function(String)? onChanged;
   const MyTextFormField({
     super.key,
     required this.hint,
@@ -21,6 +23,8 @@ class MyTextFormField extends StatefulWidget {
     this.inputFormatters,
     this.maxLines,
     this.isPassword = false,
+    this.focusNode,
+    this.onChanged,
   });
 
   @override
@@ -52,6 +56,8 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
       inputFormatters: widget.inputFormatters,
       maxLines: widget.maxLines,
       obscureText: isPassword,
+      focusNode: widget.focusNode,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
         suffixIcon:
             widget.isPassword

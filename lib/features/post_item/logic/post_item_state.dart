@@ -12,3 +12,16 @@ class PostItemError extends PostItemState {
   PostItemError({required this.message});
 }
 
+class FetchingCity extends PostItemState {}
+
+class CityFetched extends PostItemState {
+  final String city;
+
+  CityFetched({required this.city});
+}
+
+class CityFetchingError extends PostItemState {
+  final String error;
+
+  CityFetchingError({required this.error});
+}

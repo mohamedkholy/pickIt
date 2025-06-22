@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       if (state is SignedIn) {
                         return Column(
                           children: [
-                            ProfilePicture(),
+                            const ProfilePicture(),
                             SizedBox(height: 16.h),
                             Text(
                               state.user.displayName ?? "No Name",
@@ -132,18 +132,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 SizedBox(height: 16.h),
 
-                                ListingsItem(
+                                const ListingsItem(
                                   icon: Icons.format_list_bulleted,
                                   listingsCount: 2,
                                   status: "Active",
                                 ),
 
-                                ListingsItem(
+                                const ListingsItem(
                                   icon: Icons.done,
                                   listingsCount: 3,
                                   status: "Sold",
                                 ),
-                                ListingsItem(
+                                const ListingsItem(
                                   icon: Icons.clear,
                                   listingsCount: 3,
                                   status: "InActive",
