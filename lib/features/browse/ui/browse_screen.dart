@@ -1,11 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pickit/core/constants/assets.dart';
+import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
+import 'package:pickit/features/browse/logic/browse_cubit.dart';
+import 'package:pickit/features/browse/logic/browse_state.dart';
 import 'package:pickit/features/browse/ui/widgets/sell_item.dart';
 
-class BrowseScreen extends StatelessWidget {
+class BrowseScreen extends StatefulWidget {
+  final String? category;
+  const BrowseScreen({super.key, this.category});
+
+  @override
+  State<BrowseScreen> createState() => _BrowseScreenState();
+}
+
+class _BrowseScreenState extends State<BrowseScreen> {
+  late final BrowseCubit cubit = context.read<BrowseCubit>();
+  late String? selectedCategory = widget.category ?? "All";
+
+  @override
+  void didUpdateWidget(BrowseScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.category != widget.category) {
+      setState(() {
+        selectedCategory = widget.category ?? "All";
+        cubit.getItems(
+          category: selectedCategory == "All" ? null : selectedCategory,
+        );
+      });
+    }
+  }
+
   final List<String> categories = [
     "All",
     "Furniture",
@@ -15,14 +43,19 @@ class BrowseScreen extends StatelessWidget {
     "Properties",
     "Toys",
   ];
-  BrowseScreen({super.key});
+
+  @override
+  void initState() {
+    super.initState();
+    cubit.getItems();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actionsPadding: EdgeInsetsDirectional.only(end: 16.w),
-        title: Text('Browse'),
+        title: const Text('Browse'),
         titleTextStyle: MyTextStyles.font18BlackBold,
         centerTitle: true,
       ),
@@ -36,7 +69,7 @@ class BrowseScreen extends StatelessWidget {
                 height: 48.h,
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 decoration: BoxDecoration(
-                  color: Color(0xffF2E8E8),
+                  color: MyColors.secondaryColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
@@ -45,12 +78,12 @@ class BrowseScreen extends StatelessWidget {
                       Assets.assetsImagesSvgSearch,
                       width: 24.w,
                       height: 24.h,
-                      colorFilter: ColorFilter.mode(
-                        Color(0xff994D52),
+                      colorFilter: const ColorFilter.mode(
+                        MyColors.primaryColorDark,
                         BlendMode.srcIn,
                       ),
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Text("Search", style: MyTextStyles.font16BrownRegular),
                   ],
                 ),
@@ -62,19 +95,35 @@ class BrowseScreen extends StatelessWidget {
                   children: [
                     ...List.generate(
                       categories.length,
-                      (index) => Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.r),
-                          color: Color(0xffF2E8E8),
-                        ),
-                        margin: EdgeInsetsDirectional.only(end: 12.w),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16.w,
-                          vertical: 6.h,
-                        ),
-                        child: Text(
-                          categories[index],
-                          style: MyTextStyles.font14MediumBlack,
+                      (index) => InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedCategory = categories[index];
+                          });
+                          cubit.getItems(
+                            category:
+                                selectedCategory == "All"
+                                    ? null
+                                    : selectedCategory,
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                            color:
+                                selectedCategory == categories[index]
+                                    ? MyColors.primaryColorDark
+                                    : MyColors.secondaryColor,
+                          ),
+                          margin: EdgeInsetsDirectional.only(end: 12.w),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16.w,
+                            vertical: 6.h,
+                          ),
+                          child: Text(
+                            categories[index],
+                            style: MyTextStyles.font14MediumBlack,
+                          ),
                         ),
                       ),
                     ),
@@ -83,10 +132,33 @@ class BrowseScreen extends StatelessWidget {
               ),
               SizedBox(height: 24.h),
               Expanded(
-                child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return SellItem();
+                child: BlocBuilder<BrowseCubit, BrowseState>(
+                  builder: (context, state) {
+                    if (state is BrowseLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: MyColors.primaryColor,
+                        ),
+                      );
+                    }
+                    if (state is BrowseError) {
+                      return Center(child: Text(state.message));
+                    }
+                    if (state is BrowseSuccess) {
+                      return RefreshIndicator(
+                        color: MyColors.primaryColor,
+                        onRefresh: () async {
+                          await cubit.getItems();
+                        },
+                        child: ListView.builder(
+                          itemCount: state.items.length,
+                          itemBuilder: (context, index) {
+                            return SellItem(item: state.items[index]);
+                          },
+                        ),
+                      );
+                    }
+                    return const SizedBox.shrink();
                   },
                 ),
               ),

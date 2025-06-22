@@ -234,7 +234,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
     );
   }
 
-  addPhotos(List<String> photos) {
+ void addPhotos(List<String> photos) {
     setState(() {
       for (var i = 0; i < photos.length; i++) {
         if (_photos.length == 5) {

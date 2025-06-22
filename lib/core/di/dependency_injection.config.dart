@@ -11,8 +11,11 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:pickit/features/browse/data/repos/browse_repo.dart' as _i265;
+import 'package:pickit/features/browse/logic/browse_cubit.dart' as _i398;
 import 'package:pickit/features/login/data/repos/login_repo.dart' as _i977;
 import 'package:pickit/features/login/logic/login_cubit.dart' as _i1053;
+import 'package:pickit/features/main/logic/main_cubit.dart' as _i844;
 import 'package:pickit/features/post_item/data/repos/post_item_repo.dart'
     as _i932;
 import 'package:pickit/features/post_item/logic/post_item_cubit.dart' as _i56;
@@ -27,10 +30,15 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.factory<_i265.BrowseRepo>(() => _i265.BrowseRepo());
     gh.factory<_i977.LoginRepo>(() => _i977.LoginRepo());
+    gh.factory<_i844.MainCubit>(() => _i844.MainCubit());
     gh.factory<_i932.PostItemRepo>(() => _i932.PostItemRepo());
     gh.factory<_i1052.ProfileCubit>(() => _i1052.ProfileCubit());
     gh.factory<_i35.SignUpRepo>(() => _i35.SignUpRepo());
+    gh.factory<_i398.BrowseCubit>(
+      () => _i398.BrowseCubit(gh<_i265.BrowseRepo>()),
+    );
     gh.factory<_i1053.LoginCubit>(
       () => _i1053.LoginCubit(gh<_i977.LoginRepo>()),
     );

@@ -1,17 +1,19 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
+import 'package:pickit/features/post_item/data/models/item.dart';
 
 class SellItem extends StatelessWidget {
-  const SellItem({super.key});
+  final Item item;
+  const SellItem({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, Routes.itemDetails);
+        Navigator.pushNamed(context, Routes.itemDetails, arguments: item);
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 16.h),
@@ -25,7 +27,7 @@ class SellItem extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: "Clothing",
+                        text: item.category,
                         style: MyTextStyles.font14BrownRegular,
                       ),
                       TextSpan(
@@ -36,17 +38,14 @@ class SellItem extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 4.h),
-                Text(
-                  "Wireless Headphones",
-                  style: MyTextStyles.font16BlackBold,
-                ),
+                Text(item.title, style: MyTextStyles.font16BlackBold),
                 SizedBox(height: 4.h),
-                Text(r"$80", style: MyTextStyles.font14BrownRegular),
+                Text("\$${item.price}", style: MyTextStyles.font14BrownRegular),
               ],
             ),
-            Image.asset(
+            CachedNetworkImage(
+              imageUrl: item.photos.first,
               fit: BoxFit.cover,
-              Assets.assetsImagesPngLivingRoom,
               width: 130.w,
               height: 70.h,
             ),

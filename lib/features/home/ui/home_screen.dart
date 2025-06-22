@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actionsPadding: EdgeInsetsDirectional.only(end: 16.w),
-        title: Text('PickIt'),
+        title: const Text('PickIt'),
         titleTextStyle: MyTextStyles.font18BlackBold,
         centerTitle: true,
       ),
@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                   height: 48.h,
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   decoration: BoxDecoration(
-                    color: Color(0xffF2E8E8),
+                    color: const Color(0xffF2E8E8),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -38,12 +38,12 @@ class HomeScreen extends StatelessWidget {
                         Assets.assetsImagesSvgSearch,
                         width: 24.w,
                         height: 24.h,
-                        colorFilter: ColorFilter.mode(
+                        colorFilter: const ColorFilter.mode(
                           Color(0xff994D52),
                           BlendMode.srcIn,
                         ),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Text("Search", style: MyTextStyles.font16BrownRegular),
                     ],
                   ),
@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: 20.h),
                 Text("Featured", style: MyTextStyles.font22BlackBold),
                 SizedBox(height: 28.h),
-                SingleChildScrollView(
+                const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
@@ -67,8 +67,8 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: 28.h),
                 GridView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: 2,
                     crossAxisCount: 2,
                   ),

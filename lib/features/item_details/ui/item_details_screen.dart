@@ -1,12 +1,30 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/core/widgets/my_button.dart';
+import 'package:pickit/features/post_item/data/models/item.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class ItemDetailsScreen extends StatelessWidget {
-  const ItemDetailsScreen({super.key});
+class ItemDetailsScreen extends StatefulWidget {
+  final Item item;
+
+  const ItemDetailsScreen({super.key, required this.item});
+
+  @override
+  State<ItemDetailsScreen> createState() => _ItemDetailsScreenState();
+}
+
+class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
+  final PageController _pageController = PageController();
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +43,37 @@ class ItemDetailsScreen extends StatelessWidget {
               floating: true,
               expandedHeight: 200.h,
               flexibleSpace: FlexibleSpaceBar(
-                background: Image.asset(
-                  fit: BoxFit.cover,
-                  Assets.assetsImagesPngLivingRoom,
-                  width: 390.w,
-                  height: 260.h,
+                background: Stack(
+                  children: [
+                    PageView.builder(
+                      itemCount: widget.item.photos.length,
+                      controller: _pageController,
+                      itemBuilder: (context, index) {
+                        return CachedNetworkImage(
+                          imageUrl: widget.item.photos[index],
+                          fit: BoxFit.cover,
+                          width: 390.w,
+                          height: 260.h,
+                        );
+                      },
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.only(bottom: 8.h),
+                        child: SmoothPageIndicator(
+                          controller: _pageController,
+                          count: widget.item.photos.length,
+                          effect: ScaleEffect(
+                            dotWidth: 10.w,
+                            dotHeight: 10.h,
+                            dotColor: MyColors.secondaryColor,
+                            activeDotColor: MyColors.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -42,16 +86,22 @@ class ItemDetailsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 24.h),
-                    Text("Used Bicycle", style: MyTextStyles.font22BlackBold),
+                    Text(
+                      widget.item.title,
+                      style: MyTextStyles.font22BlackBold,
+                    ),
                     SizedBox(height: 16.h),
                     Text(
-                      "This bicycle is in good condition and has been used for 2 years. It's perfect for city commuting or leisurely rides.",
+                      widget.item.description,
                       style: MyTextStyles.font16BlackRegular,
                     ),
                     SizedBox(height: 24.h),
                     Text("Price", style: MyTextStyles.font18BlackBold),
                     SizedBox(height: 16.h),
-                    Text("\$100", style: MyTextStyles.font16BlackRegular),
+                    Text(
+                      "\$${widget.item.price}",
+                      style: MyTextStyles.font16BlackRegular,
+                    ),
                     SizedBox(height: 24.h),
                     Text("Location", style: MyTextStyles.font18BlackBold),
                     SizedBox(height: 16.h),
@@ -66,7 +116,7 @@ class ItemDetailsScreen extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 28.r,
-                          backgroundImage: AssetImage(
+                          backgroundImage: const AssetImage(
                             Assets.assetsImagesPngUser,
                           ),
                         ),
@@ -84,19 +134,10 @@ class ItemDetailsScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 24.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MyButton(onPressed: () {}, text: "Message"),
-                        MyButton(
-                          onPressed: () {},
-                          text: "Buy Now",
-                          textStyle: MyTextStyles.font16BlackBold,
-                          color: MyColors.secondaryColor,
-                        ),
+                        const Spacer(),
+                        MyButton(onPressed: () {
+                          
+                        }, text: "Message"),
                       ],
                     ),
                     SizedBox(height: 24.h),
