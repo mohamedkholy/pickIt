@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,7 +28,10 @@ class _ChatsScreenState extends State<ChatsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.secondaryColor,
+      backgroundColor:
+          FirebaseAuth.instance.currentUser == null
+              ? Colors.white
+              : MyColors.secondaryColor,
       appBar: AppBar(
         title: Text("Chats", style: MyTextStyles.font18BlackBold),
         centerTitle: true,
@@ -36,7 +40,12 @@ class _ChatsScreenState extends State<ChatsScreen> {
         child: BlocBuilder<ChatsCubit, ChatsState>(
           builder: (context, state) {
             if (state is UserNotLoggedIn) {
-              return const Center(child: NotSignedInWidget());
+              return Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: NotSignedInWidget(),
+                ),
+              );
             }
             if (state is ChatsLoading) {
               return const Center(
