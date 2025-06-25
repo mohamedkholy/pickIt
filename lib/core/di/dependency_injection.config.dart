@@ -13,6 +13,10 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:pickit/features/browse/data/repos/browse_repo.dart' as _i265;
 import 'package:pickit/features/browse/logic/browse_cubit.dart' as _i398;
+import 'package:pickit/features/chat/data/repos/chat_repo.dart' as _i296;
+import 'package:pickit/features/chat/logic/chat_cubit.dart' as _i1000;
+import 'package:pickit/features/chats/data/repos/chats_repo.dart' as _i548;
+import 'package:pickit/features/chats/logic/chats_cubit.dart' as _i880;
 import 'package:pickit/features/login/data/repos/login_repo.dart' as _i977;
 import 'package:pickit/features/login/logic/login_cubit.dart' as _i1053;
 import 'package:pickit/features/main/logic/main_cubit.dart' as _i844;
@@ -31,6 +35,8 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i265.BrowseRepo>(() => _i265.BrowseRepo());
+    gh.factory<_i296.ChatRepo>(() => _i296.ChatRepo());
+    gh.factory<_i548.ChatsRepo>(() => _i548.ChatsRepo());
     gh.factory<_i977.LoginRepo>(() => _i977.LoginRepo());
     gh.factory<_i844.MainCubit>(() => _i844.MainCubit());
     gh.factory<_i932.PostItemRepo>(() => _i932.PostItemRepo());
@@ -39,6 +45,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i398.BrowseCubit>(
       () => _i398.BrowseCubit(gh<_i265.BrowseRepo>()),
     );
+    gh.factory<_i1000.ChatCubit>(() => _i1000.ChatCubit(gh<_i296.ChatRepo>()));
+    gh.factory<_i880.ChatsCubit>(() => _i880.ChatsCubit(gh<_i548.ChatsRepo>()));
     gh.factory<_i1053.LoginCubit>(
       () => _i1053.LoginCubit(gh<_i977.LoginRepo>()),
     );

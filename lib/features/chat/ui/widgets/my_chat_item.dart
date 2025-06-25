@@ -1,11 +1,18 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
+import 'package:pickit/features/chat/data/models/message.dart';
+import 'package:pickit/features/chat/ui/widgets/day_widget.dart';
 
 class MyChatItem extends StatelessWidget {
-  const MyChatItem({super.key});
+  final Message message;
+  final bool isNewDay;
+  const MyChatItem({super.key, required this.message, required this.isNewDay});
 
   @override
   Widget build(BuildContext context) {
@@ -13,48 +20,59 @@ class MyChatItem extends StatelessWidget {
       child: Container(
         width: double.infinity,
         margin: EdgeInsets.only(bottom: 16.h),
-        child: Row(
+        child: Column(
           children: [
-            Expanded(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+            if (isNewDay) DayWidget(timestamp: message.timestamp),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text("12:00", style: MyTextStyles.font13BrownRegular),
-                      SizedBox(width: 4.w),
-                      Text("You", style: MyTextStyles.font13BlackRegular),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            DateFormat('HH:mm').format(message.timestamp),
+                            style: MyTextStyles.font13BrownRegular,
+                          ),
+                          SizedBox(width: 4.w),
+                          Text("You", style: MyTextStyles.font13BlackRegular),
+                        ],
+                      ),
+                      SizedBox(height: 4.h),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 16.w,
+                          vertical: 12.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color: MyColors.primaryColor,
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: Text(
+                          message.message,
+                          style: MyTextStyles.font14BlackRegular,
+                        ),
+                      ),
                     ],
                   ),
-                  SizedBox(height: 4.h),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 12.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: MyColors.primaryColor,
-                      borderRadius: BorderRadius.circular(8.r),
-                    ),
-                    child: Text(
-                      "Hi Liam, yes it is! It's in great condition and ready for a new owner.",
-                      style: MyTextStyles.font14BlackRegular,
+                ),
+                SizedBox(width: 16.w),
+                Align(
+                  alignment: AlignmentDirectional.bottomEnd,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(40.r),
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          FirebaseAuth.instance.currentUser!.photoURL ??
+                          Assets.assetsImagesPngProfileAvatar,
+                      width: 40.r,
+                      height: 40.r,
                     ),
                   ),
-                ],
-              ),
-            ),
-            SizedBox(width: 16.w),
-            Align(
-              alignment: AlignmentDirectional.bottomEnd,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(40.r),
-                child: Image.asset(
-                  Assets.assetsImagesPngProfile,
-                  width: 40.r,
-                  height: 40.r,
                 ),
-              ),
+              ],
             ),
           ],
         ),

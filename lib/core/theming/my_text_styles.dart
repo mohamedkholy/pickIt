@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/helpers/font_weight_helper.dart';
+import 'package:pickit/core/theming/my_colors.dart';
 
 abstract class MyTextStyles {
   static TextStyle font16BrownRegular = TextStyle(
@@ -19,6 +20,12 @@ abstract class MyTextStyles {
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.bold,
     color: Color(0xff994D52),
+  );
+
+  static TextStyle font12BrownBold = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: MyColors.primaryColorDark,
   );
 
   static TextStyle font14BlackRegular = TextStyle(
@@ -72,6 +79,12 @@ abstract class MyTextStyles {
 
   static TextStyle font16WhiteBold = TextStyle(
     fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.white,
+  );
+
+  static TextStyle font14WhiteBold = TextStyle(
+    fontSize: 14.sp,
     fontWeight: FontWeightHelper.bold,
     color: Colors.white,
   );

@@ -39,9 +39,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             context: context,
             barrierDismissible: false,
             builder:
-                (context) => PopScope(
+                (context) => const PopScope(
                   canPop: false,
-                  child: const Center(
+                  child: Center(
                     child: CircularProgressIndicator(
                       color: MyColors.primaryColor,
                     ),
@@ -79,7 +79,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       if (value == null || value.isEmpty) {
                         return "Name is required";
                       }
-                      if (value.length < 5) {
+                      if (value.length < 5 || value.length > 20) {
                         return "Name must be at least 5 characters long";
                       }
                       return null;
@@ -148,7 +148,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   SizedBox(height: 12.h),
                   Align(
-                    alignment: Alignment.center,
                     child: RichText(
                       text: TextSpan(
                         children: [
@@ -172,13 +171,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: 24.h),
                   Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Divider(color: MyColors.primaryColorDark),
                       ),
                       SizedBox(width: 12.w),
                       Text("OR", style: MyTextStyles.font14BrownRegular),
                       SizedBox(width: 12.w),
-                      Expanded(
+                      const Expanded(
                         child: Divider(color: MyColors.primaryColorDark),
                       ),
                     ],
