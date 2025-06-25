@@ -12,6 +12,7 @@ import 'package:pickit/core/widgets/my_button.dart';
 import 'package:pickit/core/widgets/my_dropdown.dart';
 import 'package:pickit/core/widgets/my_text_form_field.dart';
 import 'package:pickit/features/post_item/data/models/item.dart';
+import 'package:pickit/features/post_item/data/models/user.dart';
 import 'package:pickit/features/post_item/logic/post_item_cubit.dart';
 import 'package:pickit/features/post_item/logic/post_item_state.dart';
 import 'package:pickit/features/post_item/ui/widgets/add_photos_layout.dart';
@@ -63,6 +64,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
           Navigator.pop(context);
         }
         if (state is PostItemError) {
+          Navigator.pop(context);
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(state.message)));
@@ -237,15 +239,18 @@ class _PostItemScreenState extends State<PostItemScreen> {
                         if (_formKey.currentState!.validate()) {
                           _postItemCubit.postItem(
                             Item(
+                              id: "1",
                               title: _titleController.text,
                               price: double.parse(_priceController.text),
                               category: _categoryController.text,
                               description: _descriptionController.text,
                               photos: _photos,
-                              sellerId: _postItemCubit.getUserID(),
-                              sellerName: _postItemCubit.getUserName(),
-                              sellerImageUrl: _postItemCubit.getUserImageUrl(),
-                              city: _cityController.text, 
+                              seller: User(
+                                userId: _postItemCubit.getUserID(),
+                                userName: _postItemCubit.getUserName(),
+                                userImageUrl: _postItemCubit.getUserImageUrl(),
+                              ),
+                              city: _cityController.text,
                             ),
                           );
                         }

@@ -22,9 +22,10 @@ class PostItemRepo {
       }
       final itemData = item.toJson();
       itemData['photos'] = imageUrls;
+      itemData["id"] = "${_user.uid}_${DateTime.now().millisecondsSinceEpoch}";
       await _firestore
           .collection(FirestoreConstants.itemsCollection)
-          .doc(_user.uid + DateTime.now().millisecondsSinceEpoch.toString())
+          .doc( itemData["id"])
           .set(itemData);
       return true;
     } catch (e) {
@@ -62,6 +63,4 @@ class PostItemRepo {
   String getUserImageUrl() {
     return _user.photoURL ?? "";
   }
-
-  
 }

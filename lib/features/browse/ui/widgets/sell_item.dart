@@ -43,11 +43,14 @@ class SellItem extends StatelessWidget {
                 Text("\$${item.price}", style: MyTextStyles.font14BrownRegular),
               ],
             ),
-            CachedNetworkImage(
-              imageUrl: item.photos.first,
-              fit: BoxFit.cover,
-              width: 130.w,
-              height: 70.h,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: CachedNetworkImage(
+                imageUrl: item.photos.first,
+                fit: BoxFit.cover,
+                width: 130.w,
+                height: 70.h,
+              ),
             ),
           ],
         ),

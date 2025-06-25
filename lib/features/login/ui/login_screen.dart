@@ -38,9 +38,9 @@ class _LoginScreenState extends State<LoginScreen> {
             context: context,
             barrierDismissible: false,
             builder:
-                (context) => PopScope(
+                (context) => const PopScope(
                   canPop: false,
-                  child: const Center(
+                  child: Center(
                     child: CircularProgressIndicator(
                       color: MyColors.primaryColor,
                     ),
@@ -150,13 +150,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 24.h),
                   Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Divider(color: MyColors.primaryColorDark),
                       ),
                       SizedBox(width: 12.w),
                       Text("OR", style: MyTextStyles.font14BrownRegular),
                       SizedBox(width: 12.w),
-                      Expanded(
+                      const Expanded(
                         child: Divider(color: MyColors.primaryColorDark),
                       ),
                     ],

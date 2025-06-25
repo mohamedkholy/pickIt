@@ -1,10 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/constants/assets.dart';
+import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/core/widgets/my_button.dart';
+import 'package:pickit/features/chats/data/models/chat.dart';
 import 'package:pickit/features/post_item/data/models/item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -117,9 +120,9 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                         CircleAvatar(
                           radius: 28.r,
                           backgroundImage:
-                              widget.item.sellerImageUrl != null
+                              widget.item.seller.userImageUrl != null
                                   ? CachedNetworkImageProvider(
-                                    widget.item.sellerImageUrl!,
+                                    widget.item.seller.userImageUrl!,
                                   )
                                   : const AssetImage(
                                     Assets.assetsImagesPngProfileAvatar,
@@ -127,11 +130,27 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                         ),
                         SizedBox(width: 8.w),
                         Text(
-                          widget.item.sellerName,
+                          widget.item.seller.userName,
                           style: MyTextStyles.font16BlackBold,
                         ),
                         const Spacer(),
-                        MyButton(onPressed: () {}, text: "Message"),
+                        if (FirebaseAuth.instance.currentUser?.uid !=
+                            widget.item.seller.userId)
+                          MyButton(
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                Routes.chat,
+                                arguments: Chat(
+                                  id:
+                                      "${FirebaseAuth.instance.currentUser!.uid}-${widget.item.id}",
+                                  item: widget.item,
+                                  user: widget.item.seller,
+                                ),
+                              );
+                            },
+                            text: "Message",
+                          ),
                       ],
                     ),
                     SizedBox(height: 24.h),

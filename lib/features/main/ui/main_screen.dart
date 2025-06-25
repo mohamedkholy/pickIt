@@ -5,6 +5,7 @@ import 'package:pickit/core/di/dependency_injection.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/browse/logic/browse_cubit.dart';
 import 'package:pickit/features/browse/ui/browse_screen.dart';
+import 'package:pickit/features/chats/logic/chats_cubit.dart';
 import 'package:pickit/features/chats/ui/chats_screen.dart';
 import 'package:pickit/features/home/ui/home_screen.dart';
 import 'package:pickit/features/main/logic/main_cubit.dart';
@@ -71,7 +72,10 @@ class _MainScreenState extends State<MainScreen> {
               create: (context) => getIt<PostItemCubit>(),
               child: const PostItemScreen(),
             ),
-            const ChatsScreen(),
+            BlocProvider(
+              create: (context) => getIt<ChatsCubit>(),
+              child: const ChatsScreen(),
+            ),
             BlocProvider(
               create: (context) => getIt<ProfileCubit>(),
               child: const ProfileScreen(),
