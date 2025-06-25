@@ -2,6 +2,8 @@ class PostItemState {}
 
 class PostItemInitial extends PostItemState {}
 
+class UserNotLoggedIn extends PostItemState {}
+
 class PostItemLoading extends PostItemState {}
 
 class PostItemSuccess extends PostItemState {}

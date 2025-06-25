@@ -5,6 +5,7 @@ import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/core/widgets/not_signed_in_widget.dart';
+import 'package:pickit/features/main/logic/main_cubit.dart';
 import 'package:pickit/features/profile/logic/profile_cubit.dart';
 import 'package:pickit/features/profile/logic/profile_state.dart';
 import 'package:pickit/features/profile/ui/widgets/listings_item.dart';
@@ -156,6 +157,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             return ProfileOptionsItem(
                               onTap: () {
                                 profileCubit.signOut();
+                                context.read<MainCubit>().rebuildIndexedStack();
                               },
                               icon: Icons.logout,
                               text: "Logout",

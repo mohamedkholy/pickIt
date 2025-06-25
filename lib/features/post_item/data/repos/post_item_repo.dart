@@ -12,7 +12,7 @@ import 'package:pickit/features/post_item/data/models/item.dart';
 class PostItemRepo {
   final Reference _storage = FirebaseStorage.instance.ref();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final User _user = FirebaseAuth.instance.currentUser!;
+  late final User _currentUser = FirebaseAuth.instance.currentUser!;
 
   Future<bool> postItem(Item item) async {
     try {
@@ -22,7 +22,7 @@ class PostItemRepo {
       }
       final itemData = item.toJson();
       itemData['photos'] = imageUrls;
-      itemData["id"] = "${_user.uid}_${DateTime.now().millisecondsSinceEpoch}";
+      itemData["id"] = "${_currentUser.uid}_${DateTime.now().millisecondsSinceEpoch}";
       await _firestore
           .collection(FirestoreConstants.itemsCollection)
           .doc( itemData["id"])
@@ -53,14 +53,18 @@ class PostItemRepo {
   }
 
   String getUserID() {
-    return _user.uid;
+    return _currentUser.uid;
   }
 
   String getUserName() {
-    return _user.displayName ?? "";
+    return _currentUser.displayName ?? "";
   }
 
   String getUserImageUrl() {
-    return _user.photoURL ?? "";
+    return _currentUser.photoURL ?? "";
+  }
+
+  bool isUserLoggedIn() {
+    return FirebaseAuth.instance.currentUser != null;
   }
 }

@@ -61,6 +61,7 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
         body: IndexedStack(
+          key: cubit.indexedStackKey,
           index: _selectedIndex,
           children: [
             const HomeScreen(),

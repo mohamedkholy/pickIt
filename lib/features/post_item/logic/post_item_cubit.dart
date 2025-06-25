@@ -12,6 +12,16 @@ class PostItemCubit extends Cubit<PostItemState> {
   final PostItemRepo _postItemRepo;
   PostItemCubit(this._postItemRepo) : super(PostItemInitial());
 
+  void checkUserLoggedIn() {
+    final isLoggedIn = _postItemRepo.isUserLoggedIn();
+    print(isLoggedIn);
+    if (!isLoggedIn) {
+      emit(UserNotLoggedIn());
+    } else {
+      emit(PostItemInitial());
+    }
+  }
+
   Future<void> postItem(Item item) async {
     emit(PostItemLoading());
     try {

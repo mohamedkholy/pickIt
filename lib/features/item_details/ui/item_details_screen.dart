@@ -138,16 +138,20 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                             widget.item.seller.userId)
                           MyButton(
                             onPressed: () {
-                              Navigator.pushNamed(
-                                context,
-                                Routes.chat,
-                                arguments: Chat(
-                                  id:
-                                      "${FirebaseAuth.instance.currentUser!.uid}-${widget.item.id}",
-                                  item: widget.item,
-                                  user: widget.item.seller,
-                                ),
-                              );
+                              if (FirebaseAuth.instance.currentUser != null) {
+                                Navigator.pushNamed(
+                                  context,
+                                  Routes.chat,
+                                  arguments: Chat(
+                                    id:
+                                        "${FirebaseAuth.instance.currentUser!.uid}-${widget.item.id}",
+                                    item: widget.item,
+                                    user: widget.item.seller,
+                                  ),
+                                );
+                              } else {
+                                Navigator.pushNamed(context, Routes.login);
+                              }
                             },
                             text: "Message",
                           ),
