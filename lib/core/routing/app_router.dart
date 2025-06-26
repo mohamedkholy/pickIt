@@ -7,6 +7,9 @@ import 'package:pickit/features/chat/ui/chat_screen.dart';
 import 'package:pickit/features/chats/data/models/chat.dart';
 import 'package:pickit/features/home/ui/home_screen.dart';
 import 'package:pickit/features/item_details/ui/item_details_screen.dart';
+import 'package:pickit/features/listings/data/models/listing_status.dart';
+import 'package:pickit/features/listings/logic/listings_cubit.dart';
+import 'package:pickit/features/listings/ui/listings_screen.dart';
 import 'package:pickit/features/login/logic/login_cubit.dart';
 import 'package:pickit/features/login/ui/login_screen.dart';
 import 'package:pickit/features/main/ui/main_screen.dart';
@@ -52,6 +55,15 @@ abstract class AppRouter {
         final item = args as Item;
         return MaterialPageRoute(
           builder: (context) => ItemDetailsScreen(item: item),
+        );
+      case Routes.listings:
+        final  argsMap = args as Map<String,dynamic>;
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create: (context) => getIt<ListingsCubit>(),
+                child: ListingsScreen(listing: argsMap["listing"],items: argsMap["items"],),
+              ),
         );
       default:
         return null;

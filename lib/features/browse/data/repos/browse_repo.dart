@@ -14,6 +14,7 @@ class BrowseRepo {
       if (category == null) {
         items = await _firestore
             .collection(FirestoreConstants.itemsCollection)
+            .orderBy("timestamp")
             .get();
       } else {
         items = await _firestore

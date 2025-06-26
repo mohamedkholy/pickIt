@@ -5,6 +5,8 @@ import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/core/widgets/not_signed_in_widget.dart';
+import 'package:pickit/features/listings/data/models/listing_status.dart';
+import 'package:pickit/features/listings/ui/listings_screen.dart';
 import 'package:pickit/features/main/logic/main_cubit.dart';
 import 'package:pickit/features/profile/logic/profile_cubit.dart';
 import 'package:pickit/features/profile/logic/profile_state.dart';
@@ -20,12 +22,12 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  late ProfileCubit profileCubit = context.read<ProfileCubit>();
+  late final ProfileCubit _profileCubit = context.read();
 
   @override
   void initState() {
     super.initState();
-    profileCubit.isSignedIn();
+    _profileCubit.isSignedIn();
   }
 
   @override
@@ -84,43 +86,61 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       BlocBuilder<ProfileCubit, ProfileState>(
                         buildWhen:
                             (previous, current) =>
-                                current is SignedIn || current is NotSignedIn,
+                                current is ListingsLoded ||
+                                current is ListingsLoding ||
+                                current is ListingsLodingError ||
+                                current is NotSignedIn,
                         builder: (context, state) {
-                          if (state is SignedIn) {
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "My Listings",
-                                  style: MyTextStyles.font18BlackBold,
-                                ),
-                                SizedBox(height: 16.h),
-
-                                const ListingsItem(
-                                  icon: Icons.format_list_bulleted,
-                                  listingsCount: 2,
-                                  status: "Active",
-                                ),
-
-                                const ListingsItem(
-                                  icon: Icons.done,
-                                  listingsCount: 3,
-                                  status: "Sold",
-                                ),
-                                const ListingsItem(
-                                  icon: Icons.clear,
-                                  listingsCount: 3,
-                                  status: "InActive",
-                                ),
-                                Divider(
-                                  color: MyColors.secondaryColor,
-                                  thickness: 1.h,
-                                ),
-                                SizedBox(height: 16.h),
-                              ],
+                          if (state is NotSignedIn) {
+                            return Container();
+                          }
+                          if (state is ListingsLoding) {
+                            return const Center(
+                              child: CircularProgressIndicator(
+                                color: MyColors.primaryColor,
+                              ),
                             );
                           }
-                          return Container();
+                          if (state is ListingsLodingError) {
+                            return Center(
+                              child: Text(
+                                "Loading listings failed!",
+                                style: MyTextStyles.font14MediumBlack,
+                              ),
+                            );
+                          }
+
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "My Listings",
+                                style: MyTextStyles.font18BlackBold,
+                              ),
+                              SizedBox(height: 16.h),
+                              ListingsItem(
+                                items: _profileCubit.items,
+                                icon: Icons.format_list_bulleted,
+                                status: ListingStatus.active,
+                              ),
+                              ListingsItem(
+                                items: _profileCubit.items,
+                                icon: Icons.done,
+
+                                status: ListingStatus.sold,
+                              ),
+                              ListingsItem(
+                                items: _profileCubit.items,
+                                icon: Icons.clear,
+                                status: ListingStatus.inactive,
+                              ),
+                              Divider(
+                                color: MyColors.secondaryColor,
+                                thickness: 1.h,
+                              ),
+                              SizedBox(height: 16.h),
+                            ],
+                          );
                         },
                       ),
                       ProfileOptionsItem(
@@ -156,7 +176,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           if (state is SignedIn) {
                             return ProfileOptionsItem(
                               onTap: () {
-                                profileCubit.signOut();
+                                _profileCubit.signOut();
                                 context.read<MainCubit>().rebuildIndexedStack();
                               },
                               icon: Icons.logout,

@@ -20,28 +20,37 @@ class SellItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: item.category,
-                        style: MyTextStyles.font14BrownRegular,
-                      ),
-                      TextSpan(
-                        text: " . Tanta",
-                        style: MyTextStyles.font14BrownRegular,
-                      ),
-                    ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: item.category,
+                          style: MyTextStyles.font14BrownRegular,
+                        ),
+                        TextSpan(
+                          text: " . ${item.city}",
+                          style: MyTextStyles.font14BrownRegular,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 4.h),
-                Text(item.title, style: MyTextStyles.font16BlackBold),
-                SizedBox(height: 4.h),
-                Text("\$${item.price}", style: MyTextStyles.font14BrownRegular),
-              ],
+                  SizedBox(height: 4.h),
+                  Text(
+                    item.title,
+                    style: MyTextStyles.font16BlackBold,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 4.h),
+                  Text(
+                    "\$${item.price}",
+                    style: MyTextStyles.font14BrownRegular,
+                  ),
+                ],
+              ),
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(8.r),

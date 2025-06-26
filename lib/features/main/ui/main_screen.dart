@@ -67,7 +67,10 @@ class _MainScreenState extends State<MainScreen> {
             const HomeScreen(),
             BlocProvider(
               create: (context) => getIt<BrowseCubit>(),
-              child: BrowseScreen(category: cubit.state.category),
+              child: BrowseScreen(
+                key: ValueKey(cubit.state.category),
+                category: cubit.state.category,
+              ),
             ),
             BlocProvider(
               create: (context) => getIt<PostItemCubit>(),
@@ -79,7 +82,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
             BlocProvider(
               create: (context) => getIt<ProfileCubit>(),
-              child: const ProfileScreen(),
+              child: ProfileScreen(key: UniqueKey()),
             ),
           ],
         ),

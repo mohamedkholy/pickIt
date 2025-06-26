@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pickit/features/listings/data/models/listing_status.dart';
 import 'package:pickit/features/post_item/data/models/user.dart';
 
 class Item {
@@ -8,8 +10,10 @@ class Item {
   final String category;
   final String description;
   final List<String> photos;
-  final User seller;  
+  final User seller;
   final String city;
+  final ListingStatus? status;
+  final DateTime timestamp;
 
   Item({
     required this.id,
@@ -20,7 +24,9 @@ class Item {
     required this.photos,
     required this.seller,
     required this.city,
-  });
+    DateTime? timestamp,
+    this.status = ListingStatus.active,
+  }) : timestamp = timestamp ?? DateTime.now();
 
   Map<String, dynamic> toJson() {
     return {
@@ -32,6 +38,8 @@ class Item {
       'photos': photos,
       'seller': seller.toJson(),
       'city': city,
+      'timestamp': timestamp,
+      'status': status!.name,
     };
   }
 
@@ -48,13 +56,15 @@ class Item {
       photos: photoList,
       seller: User.fromJson(json['seller']),
       city: json['city'],
+      timestamp: (json['timestamp'] as Timestamp).toDate(),
+      status: ListingStatusExtensions.fromString(json['status']),
     );
   }
 
   @override
   String toString() {
-    return 'Item(id: $id, title: $title, price: $price, category: $category, description: $description, photos: $photos, seller: $seller, city: $city)';
-  } 
+    return 'Item(id: $id, title: $title, price: $price, category: $category, description: $description, photos: $photos, seller: $seller, city: $city,status: $status,$timestamp)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -67,7 +77,9 @@ class Item {
         other.description == description &&
         listEquals(other.photos, photos) &&
         other.seller == seller &&
-        other.city == city;
+        other.city == city &&
+        other.timestamp == timestamp &&
+        other.status == status;
   }
 
   @override
@@ -79,6 +91,8 @@ class Item {
         description.hashCode ^
         photos.hashCode ^
         seller.hashCode ^
-        city.hashCode;
+        city.hashCode ^
+        timestamp.hashCode ^
+        status.hashCode;
   }
 }

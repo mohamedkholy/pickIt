@@ -8,6 +8,7 @@ import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/browse/logic/browse_cubit.dart';
 import 'package:pickit/features/browse/logic/browse_state.dart';
 import 'package:pickit/features/browse/ui/widgets/sell_item.dart';
+import 'package:pickit/features/listings/data/models/listing_status.dart';
 
 class BrowseScreen extends StatefulWidget {
   final String? category;
@@ -19,20 +20,8 @@ class BrowseScreen extends StatefulWidget {
 
 class _BrowseScreenState extends State<BrowseScreen> {
   late final BrowseCubit cubit = context.read<BrowseCubit>();
-  late String? selectedCategory = widget.category ?? "All";
-
-  @override
-  void didUpdateWidget(BrowseScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.category != widget.category) {
-      setState(() {
-        selectedCategory = widget.category ?? "All";
-        cubit.getItems(
-          category: selectedCategory == "All" ? null : selectedCategory,
-        );
-      });
-    }
-  }
+  late String selectedCategory = widget.category ?? "All";
+  final ScrollController _scrollController = ScrollController();
 
   final List<String> categories = [
     "All",
@@ -47,7 +36,17 @@ class _BrowseScreenState extends State<BrowseScreen> {
   @override
   void initState() {
     super.initState();
-    cubit.getItems();
+    selectedCategory = widget.category ?? "All";
+    cubit.getItems(
+      category: selectedCategory == "All" ? null : selectedCategory,
+    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollController.jumpTo(
+        (categories.indexOf(selectedCategory) + 1) /
+            categories.length *
+            _scrollController.position.maxScrollExtent,
+      );
+    });
   }
 
   @override
@@ -90,6 +89,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
               ),
               SizedBox(height: 20.h),
               SingleChildScrollView(
+                controller: _scrollController,
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
@@ -153,7 +153,11 @@ class _BrowseScreenState extends State<BrowseScreen> {
                         child: ListView.builder(
                           itemCount: state.items.length,
                           itemBuilder: (context, index) {
-                            return SellItem(item: state.items[index]);
+                            if (state.items[index].status ==
+                                ListingStatus.active) {
+                              return SellItem(item: state.items[index]);
+                            }
+                            return Container();
                           },
                         ),
                       );
