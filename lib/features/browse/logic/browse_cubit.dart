@@ -8,7 +8,9 @@ class BrowseCubit extends Cubit<BrowseState> {
   final BrowseRepo _browseRepo;
   BrowseCubit(this._browseRepo) : super(BrowseInitial());
 
+
   Future<void> getItems({String? category}) async {
+
     emit(BrowseLoading());
     final items = await _browseRepo.getItems(category: category);
     if (items.isEmpty) {
