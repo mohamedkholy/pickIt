@@ -27,6 +27,8 @@ import 'package:pickit/features/post_item/data/repos/post_item_repo.dart'
 import 'package:pickit/features/post_item/logic/post_item_cubit.dart' as _i56;
 import 'package:pickit/features/profile/data/repos/profile_repo.dart' as _i244;
 import 'package:pickit/features/profile/logic/profile_cubit.dart' as _i1052;
+import 'package:pickit/features/search/data/repos/search_repo.dart' as _i161;
+import 'package:pickit/features/search/logic/search_cubit.dart' as _i683;
 import 'package:pickit/features/sign_up/data/repos/sign_up_repo.dart' as _i35;
 import 'package:pickit/features/sign_up/logic/sign_up_cubit.dart' as _i1004;
 
@@ -46,6 +48,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i35.SignUpRepo>(() => _i35.SignUpRepo());
     gh.factory<_i90.ListingsRepo>(() => _i90.ListingsRepo());
     gh.factory<_i244.ProfileRepo>(() => _i244.ProfileRepo());
+    gh.factory<_i161.SearchRepo>(() => _i161.SearchRepo());
     gh.factory<_i451.ListingsCubit>(
       () => _i451.ListingsCubit(gh<_i90.ListingsRepo>()),
     );
@@ -53,6 +56,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i398.BrowseCubit(gh<_i265.BrowseRepo>()),
     );
     gh.factory<_i1000.ChatCubit>(() => _i1000.ChatCubit(gh<_i296.ChatRepo>()));
+    gh.factory<_i683.SearchCubit>(
+      () => _i683.SearchCubit(gh<_i161.SearchRepo>()),
+    );
     gh.factory<_i880.ChatsCubit>(() => _i880.ChatsCubit(gh<_i548.ChatsRepo>()));
     gh.factory<_i1053.LoginCubit>(
       () => _i1053.LoginCubit(gh<_i977.LoginRepo>()),

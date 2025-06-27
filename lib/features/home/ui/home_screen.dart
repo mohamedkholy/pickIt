@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pickit/core/constants/assets.dart';
+import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/home/ui/widgets/category_item.dart';
 import 'package:pickit/features/home/ui/widgets/featured_item.dart';
@@ -25,27 +26,32 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  height: 48.h,
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  decoration: BoxDecoration(
-                    color: const Color(0xffF2E8E8),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        Assets.assetsImagesSvgSearch,
-                        width: 24.w,
-                        height: 24.h,
-                        colorFilter: const ColorFilter.mode(
-                          Color(0xff994D52),
-                          BlendMode.srcIn,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.search);
+                  },
+                  child: Container(
+                    height: 48.h,
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffF2E8E8),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          Assets.assetsImagesSvgSearch,
+                          width: 24.w,
+                          height: 24.h,
+                          colorFilter: const ColorFilter.mode(
+                            Color(0xff994D52),
+                            BlendMode.srcIn,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                      Text("Search", style: MyTextStyles.font16BrownRegular),
-                    ],
+                        const SizedBox(width: 10),
+                        Text("Search", style: MyTextStyles.font16BrownRegular),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 20.h),

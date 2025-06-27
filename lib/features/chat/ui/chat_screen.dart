@@ -105,34 +105,42 @@ class _ChatScreenState extends State<ChatScreen> {
                       return Center(child: Text(state.error));
                     }
                     if (state is ChatMessagesLoaded) {
-                      if (state.messages.isEmpty) {
-                        return const Center(child: Text("No messages yet"));
-                      }
-
                       return Column(
                         children: [
                           Expanded(
-                            child: ListView.builder(
-                              reverse: true,
-                              itemCount: state.messages.length,
-                              itemBuilder: (context, index) {
-                                final isNewDay =
-                                    index == state.messages.length - 1 ||
-                                    state.messages[index].timestamp.day !=
-                                        state.messages[index + 1].timestamp.day;
-                                final message = state.messages[index];
-                                return message.senderId == currentUserId
-                                    ? MyChatItem(
-                                      message: message,
-                                      isNewDay: isNewDay,
+                            child:
+                                state.messages.isEmpty
+                                    ? const Center(
+                                      child: Text("No messages yet"),
                                     )
-                                    : OtherChatItem(
-                                      message: message,
-                                      user: widget.chat.user,
-                                      isNewDay: isNewDay,
-                                    );
-                              },
-                            ),
+                                    : ListView.builder(
+                                      reverse: true,
+                                      itemCount: state.messages.length,
+                                      itemBuilder: (context, index) {
+                                        final isNewDay =
+                                            index ==
+                                                state.messages.length - 1 ||
+                                            state
+                                                    .messages[index]
+                                                    .timestamp
+                                                    .day !=
+                                                state
+                                                    .messages[index + 1]
+                                                    .timestamp
+                                                    .day;
+                                        final message = state.messages[index];
+                                        return message.senderId == currentUserId
+                                            ? MyChatItem(
+                                              message: message,
+                                              isNewDay: isNewDay,
+                                            )
+                                            : OtherChatItem(
+                                              message: message,
+                                              user: widget.chat.user,
+                                              isNewDay: isNewDay,
+                                            );
+                                      },
+                                    ),
                           ),
                           TextField(
                             controller: _messageController,

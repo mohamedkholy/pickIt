@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pickit/core/constants/assets.dart';
+import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/browse/logic/browse_cubit.dart';
@@ -64,27 +65,32 @@ class _BrowseScreenState extends State<BrowseScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 48.h,
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                decoration: BoxDecoration(
-                  color: MyColors.secondaryColor,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      Assets.assetsImagesSvgSearch,
-                      width: 24.w,
-                      height: 24.h,
-                      colorFilter: const ColorFilter.mode(
-                        MyColors.primaryColorDark,
-                        BlendMode.srcIn,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.search);
+                },
+                child: Container(
+                  height: 48.h,
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  decoration: BoxDecoration(
+                    color: MyColors.secondaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        Assets.assetsImagesSvgSearch,
+                        width: 24.w,
+                        height: 24.h,
+                        colorFilter: const ColorFilter.mode(
+                          MyColors.primaryColorDark,
+                          BlendMode.srcIn,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 10),
-                    Text("Search", style: MyTextStyles.font16BrownRegular),
-                  ],
+                      const SizedBox(width: 10),
+                      Text("Search", style: MyTextStyles.font16BrownRegular),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 20.h),

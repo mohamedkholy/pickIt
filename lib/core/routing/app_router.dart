@@ -14,6 +14,8 @@ import 'package:pickit/features/login/logic/login_cubit.dart';
 import 'package:pickit/features/login/ui/login_screen.dart';
 import 'package:pickit/features/main/ui/main_screen.dart';
 import 'package:pickit/features/post_item/data/models/item.dart';
+import 'package:pickit/features/search/logic/search_cubit.dart';
+import 'package:pickit/features/search/ui/search_screen.dart';
 import 'package:pickit/features/sign_up/logic/sign_up_cubit.dart';
 import 'package:pickit/features/sign_up/ui/sign_up_screen.dart';
 
@@ -63,6 +65,14 @@ abstract class AppRouter {
               (context) => BlocProvider(
                 create: (context) => getIt<ListingsCubit>(),
                 child: ListingsScreen(listing: argsMap["listing"],items: argsMap["items"],),
+              ),
+        );
+        case Routes.search:
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create: (context) => getIt<SearchCubit>(),
+                child: const SearchScreen(),
               ),
         );
       default:
