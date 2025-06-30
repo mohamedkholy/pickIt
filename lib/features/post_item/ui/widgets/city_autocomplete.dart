@@ -99,8 +99,8 @@ class _CityAutocompleteState extends State<CityAutocomplete> {
             if (state is FetchingCity) {
               return Padding(
                 padding: EdgeInsets.all(8.r),
-                child: const CircularProgressIndicator(
-                  color: MyColors.primaryColor,
+                child: CircularProgressIndicator(
+                  color: MyColors(context).primaryColor,
                 ),
               );
             }
@@ -111,7 +111,7 @@ class _CityAutocompleteState extends State<CityAutocomplete> {
               icon: Icon(
                 Icons.location_on_rounded,
                 size: 32.r,
-                color: MyColors.primaryColor,
+                color: MyColors(context).primaryColor,
               ),
             );
           },

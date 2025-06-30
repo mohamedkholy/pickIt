@@ -28,10 +28,10 @@ class _ProfilePictureState extends State<ProfilePicture> {
                 if (state is UploadingProfilePic) {
                   return CircleAvatar(
                     radius: 64.r,
-                    backgroundColor: MyColors.primaryColorDark,
-                    child: const Center(
+                    backgroundColor: MyColors(context).primaryColorDark,
+                    child: Center(
                       child: CircularProgressIndicator(
-                        color: MyColors.secondaryColor,
+                        color: MyColors(context).secondaryColor,
                       ),
                     ),
                   );
@@ -71,9 +71,12 @@ class _ProfilePictureState extends State<ProfilePicture> {
                 },
                 child: CircleAvatar(
                   radius: 16.r,
-                  backgroundColor: MyColors.primaryColor,
+                  backgroundColor: MyColors(context).primaryColor,
                   // ignore: prefer_const_constructors
-                  child: Icon(Icons.edit, color: MyColors.secondaryColor),
+                  child: Icon(
+                    Icons.edit,
+                    color: MyColors(context).secondaryColor,
+                  ),
                 ),
               ),
             ),

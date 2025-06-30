@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/routing/routes.dart';
+import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/home/ui/widgets/category_item.dart';
 import 'package:pickit/features/home/ui/widgets/featured_item.dart';
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         actionsPadding: EdgeInsetsDirectional.only(end: 16.w),
         title: const Text('PickIt'),
-        titleTextStyle: MyTextStyles.font18BlackBold,
+        titleTextStyle: MyTextStyles(context).font18BlackBold,
         centerTitle: true,
       ),
       body: SafeArea(
@@ -34,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                     height: 48.h,
                     padding: EdgeInsets.symmetric(horizontal: 20.w),
                     decoration: BoxDecoration(
-                      color: const Color(0xffF2E8E8),
+                      color: MyColors(context).secondaryColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
@@ -43,19 +44,22 @@ class HomeScreen extends StatelessWidget {
                           Assets.assetsImagesSvgSearch,
                           width: 24.w,
                           height: 24.h,
-                          colorFilter: const ColorFilter.mode(
-                            Color(0xff994D52),
+                          colorFilter: ColorFilter.mode(
+                            MyColors(context).primaryColorDark,
                             BlendMode.srcIn,
                           ),
                         ),
                         const SizedBox(width: 10),
-                        Text("Search", style: MyTextStyles.font16BrownRegular),
+                        Text(
+                          "Search",
+                          style: MyTextStyles(context).font16BrownRegular,
+                        ),
                       ],
                     ),
                   ),
                 ),
                 SizedBox(height: 20.h),
-                Text("Featured", style: MyTextStyles.font22BlackBold),
+                Text("Featured", style: MyTextStyles(context).font22BlackBold),
                 SizedBox(height: 28.h),
                 const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -69,7 +73,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 36.h),
-                Text("Categories", style: MyTextStyles.font22BlackBold),
+                Text(
+                  "Categories",
+                  style: MyTextStyles(context).font22BlackBold,
+                ),
                 SizedBox(height: 28.h),
                 GridView.builder(
                   shrinkWrap: true,

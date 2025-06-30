@@ -38,11 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
             context: context,
             barrierDismissible: false,
             builder:
-                (context) => const PopScope(
+                (context) => PopScope(
                   canPop: false,
                   child: Center(
                     child: CircularProgressIndicator(
-                      color: MyColors.primaryColor,
+                      color: MyColors(context).primaryColor,
                     ),
                   ),
                 ),
@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Log in", style: MyTextStyles.font18BlackBold),
+          title: Text("Log in", style: MyTextStyles(context).font18BlackBold),
           centerTitle: true,
         ),
         body: SafeArea(
@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: () {},
                     child: Text(
                       "Forgot password?",
-                      style: MyTextStyles.font14BrownRegular,
+                      style: MyTextStyles(context).font14BrownRegular,
                     ),
                   ),
                   SizedBox(height: 24.h),
@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           TextSpan(
                             text: "Don't have an account?",
-                            style: MyTextStyles.font14BrownRegular,
+                            style: MyTextStyles(context).font14BrownRegular,
                           ),
                           TextSpan(
                             recognizer:
@@ -141,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Navigator.pushNamed(context, Routes.signup);
                                   },
                             text: " Sign up",
-                            style: MyTextStyles.font14BrownBold,
+                            style: MyTextStyles(context).font14BrownBold,
                           ),
                         ],
                       ),
@@ -150,14 +150,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 24.h),
                   Row(
                     children: [
-                      const Expanded(
-                        child: Divider(color: MyColors.primaryColorDark),
+                      Expanded(
+                        child: Divider(
+                          color: MyColors(context).primaryColorDark,
+                        ),
                       ),
                       SizedBox(width: 12.w),
-                      Text("OR", style: MyTextStyles.font14BrownRegular),
+                      Text(
+                        "OR",
+                        style: MyTextStyles(context).font14BrownRegular,
+                      ),
                       SizedBox(width: 12.w),
-                      const Expanded(
-                        child: Divider(color: MyColors.primaryColorDark),
+                      Expanded(
+                        child: Divider(
+                          color: MyColors(context).primaryColorDark,
+                        ),
                       ),
                     ],
                   ),

@@ -3,16 +3,21 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pickit/core/constants/firestore_constants.dart';
+import 'package:pickit/core/constants/shared_preferences_constants.dart';
 import 'package:pickit/features/post_item/data/models/item.dart';
 import 'package:pickit/features/profile/data/repos/profile_repo.dart';
 import 'package:pickit/features/profile/logic/profile_state.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @injectable
 class ProfileCubit extends Cubit<ProfileState> {
   final ProfileRepo _profileRepo;
+  late bool isNotificationsOn = false;
   List<Item> items = [];
   ProfileCubit(this._profileRepo) : super(ProfileInitial());
 
@@ -74,6 +79,56 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(UploadedProfilePic(url: url));
     } catch (e) {
       emit(UploadProfilePicError(error: "Something went wrong"));
+    }
+  }
+
+  void checkNotificationsState() async {
+    emit(
+      NotificationsState(
+        notificationsOn:
+            (await SharedPreferences.getInstance()).getBool(
+              SharedPreferencesConstants.notificationsKey,
+            ) ??
+            false,
+      ),
+    );
+  }
+
+  void toogleNotifications(bool notificationsstate) {
+    (SharedPreferences.getInstance()).then((sp) {
+      sp.setBool(
+        SharedPreferencesConstants.notificationsKey,
+        notificationsstate,
+      );
+      emit(NotificationsState(notificationsOn: notificationsstate));
+    });
+  }
+
+  Future<void> openHelpCenter() async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'support@pickIt.com',
+      query: Uri.encodeFull(
+        'subject=Help Center Inquiry&body=Describe your issue here...',
+      ),
+    );
+
+    try {
+      await launchUrl(emailLaunchUri);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> openPolicy() async {
+    final Uri emailLaunchUri = Uri.parse(
+      "https://sites.google.com/view/pickit-app",
+    );
+
+    try {
+      await launchUrl(emailLaunchUri);
+    } catch (e) {
+      debugPrint(e.toString());
     }
   }
 }

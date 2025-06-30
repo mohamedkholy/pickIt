@@ -40,7 +40,7 @@ class ListingsItem extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.r),
-                color: MyColors.secondaryColor,
+                color: MyColors(context).secondaryColor,
               ),
               padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
               child: Icon(icon, size: 20.dg),
@@ -49,10 +49,10 @@ class ListingsItem extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(status.name, style: MyTextStyles.font16BlackBold),
+                Text(status.name, style: MyTextStyles(context).font16BlackBold),
                 Text(
                   "${items.where((e) => e.status == status).length}  Listings",
-                  style: MyTextStyles.font14BrownRegular,
+                  style: MyTextStyles(context).font14BrownRegular,
                 ),
               ],
             ),

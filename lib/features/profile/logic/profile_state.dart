@@ -17,7 +17,7 @@ class ListingsLoding extends ProfileState {}
 class ListingsLoded extends ProfileState {}
 
 class ListingsLodingError extends ProfileState {
-   final String error;
+  final String error;
   ListingsLodingError({required this.error});
 }
 
@@ -31,4 +31,10 @@ class UploadedProfilePic extends ProfileState {
 class UploadProfilePicError extends ProfileState {
   final String error;
   UploadProfilePicError({required this.error});
+}
+
+class NotificationsState extends ProfileState {
+  final bool notificationsOn;
+
+  NotificationsState({required this.notificationsOn});
 }

@@ -31,6 +31,7 @@ import 'package:pickit/features/search/data/repos/search_repo.dart' as _i161;
 import 'package:pickit/features/search/logic/search_cubit.dart' as _i683;
 import 'package:pickit/features/sign_up/data/repos/sign_up_repo.dart' as _i35;
 import 'package:pickit/features/sign_up/logic/sign_up_cubit.dart' as _i1004;
+import 'package:pickit/features/main/logic/theme_cubit.dart' as _i520;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -42,13 +43,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i265.BrowseRepo>(() => _i265.BrowseRepo());
     gh.factory<_i296.ChatRepo>(() => _i296.ChatRepo());
     gh.factory<_i548.ChatsRepo>(() => _i548.ChatsRepo());
+    gh.factory<_i90.ListingsRepo>(() => _i90.ListingsRepo());
     gh.factory<_i977.LoginRepo>(() => _i977.LoginRepo());
     gh.factory<_i844.MainCubit>(() => _i844.MainCubit());
     gh.factory<_i932.PostItemRepo>(() => _i932.PostItemRepo());
-    gh.factory<_i35.SignUpRepo>(() => _i35.SignUpRepo());
-    gh.factory<_i90.ListingsRepo>(() => _i90.ListingsRepo());
     gh.factory<_i244.ProfileRepo>(() => _i244.ProfileRepo());
     gh.factory<_i161.SearchRepo>(() => _i161.SearchRepo());
+    gh.factory<_i35.SignUpRepo>(() => _i35.SignUpRepo());
+    gh.factory<_i520.ThemeCubit>(() => _i520.ThemeCubit());
     gh.factory<_i451.ListingsCubit>(
       () => _i451.ListingsCubit(gh<_i90.ListingsRepo>()),
     );

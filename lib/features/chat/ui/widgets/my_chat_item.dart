@@ -34,10 +34,13 @@ class MyChatItem extends StatelessWidget {
                         children: [
                           Text(
                             DateFormat('HH:mm').format(message.timestamp),
-                            style: MyTextStyles.font13BrownRegular,
+                            style: MyTextStyles(context).font13BrownRegular,
                           ),
                           SizedBox(width: 4.w),
-                          Text("You", style: MyTextStyles.font13BlackRegular),
+                          Text(
+                            "You",
+                            style: MyTextStyles(context).font13BlackRegular,
+                          ),
                         ],
                       ),
                       SizedBox(height: 4.h),
@@ -47,12 +50,12 @@ class MyChatItem extends StatelessWidget {
                           vertical: 12.h,
                         ),
                         decoration: BoxDecoration(
-                          color: MyColors.primaryColor,
+                          color: MyColors(context).primaryColor,
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: Text(
                           message.message,
-                          style: MyTextStyles.font14BlackRegular,
+                          style: MyTextStyles(context).font14BlackRegular,
                         ),
                       ),
                     ],

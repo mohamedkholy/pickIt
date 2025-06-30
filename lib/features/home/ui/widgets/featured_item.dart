@@ -21,7 +21,7 @@ class FeaturedItem extends StatelessWidget {
             height: 135.h,
           ),
           SizedBox(height: 10.h),
-          Text("Living Room", style: MyTextStyles.font16BlackMedium),
+          Text("Living Room", style: MyTextStyles(context).font16BlackMedium),
         ],
       ),
     );

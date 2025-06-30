@@ -32,21 +32,21 @@ class _SearchFieldState extends State<SearchField> {
       textInputAction: TextInputAction.search,
       onChanged: _handleTextFieldChange,
       decoration: InputDecoration(
-        prefixIcon: const IconButton(
+        prefixIcon: IconButton(
           onPressed: null,
-          icon: Icon(Icons.search, color: MyColors.primaryColorDark),
+          icon: Icon(Icons.search, color: MyColors(context).primaryColorDark),
         ),
         suffixIcon: IconButton(
           onPressed: () {
             _editingController.clear();
             _handleTextFieldChange(null);
           },
-          icon: const Icon(Icons.clear, color: MyColors.primaryColorDark),
+          icon: Icon(Icons.clear, color: MyColors(context).primaryColorDark),
         ),
         hintText: "Search now...",
-        hintStyle: MyTextStyles.font16BrownRegular,
+        hintStyle: MyTextStyles(context).font16BrownRegular,
         filled: true,
-        fillColor: const Color(0xffF2E8E8),
+        fillColor: MyColors(context).secondaryColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide.none,

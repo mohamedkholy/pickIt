@@ -34,7 +34,10 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Item Details", style: MyTextStyles.font18BlackBold),
+        title: Text(
+          "Item Details",
+          style: MyTextStyles(context).font18BlackBold,
+        ),
       ),
       body: SafeArea(
         child: CustomScrollView(
@@ -70,8 +73,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                           effect: ScaleEffect(
                             dotWidth: 10.w,
                             dotHeight: 10.h,
-                            dotColor: MyColors.secondaryColor,
-                            activeDotColor: MyColors.primaryColor,
+                            dotColor: MyColors(context).secondaryColor,
+                            activeDotColor: MyColors(context).primaryColor,
                           ),
                         ),
                       ),
@@ -91,29 +94,35 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                     SizedBox(height: 24.h),
                     Text(
                       widget.item.title,
-                      style: MyTextStyles.font22BlackBold,
+                      style: MyTextStyles(context).font22BlackBold,
                     ),
                     SizedBox(height: 16.h),
                     Text(
                       widget.item.description,
-                      style: MyTextStyles.font16BlackRegular,
+                      style: MyTextStyles(context).font16BlackRegular,
                     ),
                     SizedBox(height: 24.h),
-                    Text("Price", style: MyTextStyles.font18BlackBold),
+                    Text("Price", style: MyTextStyles(context).font18BlackBold),
                     SizedBox(height: 16.h),
                     Text(
                       "\$${widget.item.price}",
-                      style: MyTextStyles.font16BlackRegular,
+                      style: MyTextStyles(context).font16BlackRegular,
                     ),
                     SizedBox(height: 24.h),
-                    Text("Location", style: MyTextStyles.font18BlackBold),
+                    Text(
+                      "Location",
+                      style: MyTextStyles(context).font18BlackBold,
+                    ),
                     SizedBox(height: 16.h),
                     Text(
                       widget.item.city,
-                      style: MyTextStyles.font16BlackRegular,
+                      style: MyTextStyles(context).font16BlackRegular,
                     ),
                     SizedBox(height: 24.h),
-                    Text("Seller", style: MyTextStyles.font18BlackBold),
+                    Text(
+                      "Seller",
+                      style: MyTextStyles(context).font18BlackBold,
+                    ),
                     SizedBox(height: 16.h),
                     Row(
                       children: [
@@ -131,7 +140,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                         SizedBox(width: 8.w),
                         Text(
                           widget.item.seller.userName,
-                          style: MyTextStyles.font16BlackBold,
+                          style: MyTextStyles(context).font16BlackBold,
                         ),
                         const Spacer(),
                         if (FirebaseAuth.instance.currentUser?.uid !=

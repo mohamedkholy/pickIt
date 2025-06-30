@@ -37,7 +37,8 @@ class OtherChatItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(40.r),
                     child: CachedNetworkImage(
                       imageUrl:
-                          user.userImageUrl ?? Assets.assetsImagesPngProfileAvatar,
+                          user.userImageUrl ??
+                          Assets.assetsImagesPngProfileAvatar,
                       width: 40.r,
                       height: 40.r,
                     ),
@@ -52,12 +53,12 @@ class OtherChatItem extends StatelessWidget {
                         children: [
                           Text(
                             user.userName,
-                            style: MyTextStyles.font13BlackRegular,
+                            style: MyTextStyles(context).font13BlackRegular,
                           ),
                           SizedBox(width: 4.w),
                           Text(
                             DateFormat('HH:mm').format(message.timestamp),
-                            style: MyTextStyles.font13BrownRegular,
+                            style: MyTextStyles(context).font13BrownRegular,
                           ),
                         ],
                       ),
@@ -68,12 +69,12 @@ class OtherChatItem extends StatelessWidget {
                           vertical: 12.h,
                         ),
                         decoration: BoxDecoration(
-                          color: MyColors.secondaryColor,
+                          color: MyColors(context).secondaryColor,
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: Text(
                           message.message,
-                          style: MyTextStyles.font14BlackRegular,
+                          style: MyTextStyles(context).font14BlackRegular,
                         ),
                       ),
                     ],

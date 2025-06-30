@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pickit/core/theming/my_colors.dart';
+import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/listings/data/models/listing_status.dart';
 import 'package:pickit/features/listings/ui/widgets/listing_widget.dart';
 import 'package:pickit/features/post_item/data/models/item.dart';
@@ -30,7 +33,22 @@ class _ListingListViewState extends State<ListingListView> {
             return ListingWidget(item: items[index]);
           },
         )
-        : Center(child: Text("No ${widget.status.name} items was found"));
+        : Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.search,
+                color: MyColors(context).primaryColorDark,
+                size: 26.dg,
+              ),
+              Text(
+                "No ${widget.status.name} items was found",
+                style: MyTextStyles(context).font14BrownBold,
+              ),
+            ],
+          ),
+        );
   }
 
   void filterByStatus() {

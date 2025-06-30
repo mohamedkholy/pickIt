@@ -17,19 +17,22 @@ class NotSignedInWidget extends StatelessWidget {
           Icon(
             Icons.person_pin_circle_rounded,
             size: 56.dg,
-            color: MyColors.primaryColor,
+            color: MyColors(context).primaryColor,
           ),
           SizedBox(height: 16.h),
-          Text("You are not signed in", style: MyTextStyles.font18BlackBold),
+          Text(
+            "You are not signed in",
+            style: MyTextStyles(context).font18BlackBold,
+          ),
           SizedBox(height: 8.h),
           Text(
             "Sign in to your account to see your listings,sell items and more.",
-            style: MyTextStyles.font14BrownRegular,
+            style: MyTextStyles(context).font14BrownRegular,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 16.h),
           MaterialButton(
-            color: MyColors.primaryColor,
+            color: MyColors(context).primaryColor,
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.r),
@@ -37,7 +40,10 @@ class NotSignedInWidget extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, Routes.login);
             },
-            child: Text("Sign In", style: MyTextStyles.font16WhiteBold),
+            child: Text(
+              "Sign In",
+              style: MyTextStyles(context).font16WhiteBold,
+            ),
           ),
           SizedBox(height: 32.h),
         ],

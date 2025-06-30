@@ -49,7 +49,7 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: MyTextStyles.font16BlackRegular,
+      style: MyTextStyles(context).font16BlackRegular,
       controller: widget.controller,
       keyboardType: widget.keyboardType,
       validator: widget.validator,
@@ -69,15 +69,15 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
                   },
                   icon: Icon(
                     size: 24.r,
-                    color: MyColors.primaryColorDark,
+                    color: MyColors(context).primaryColorDark,
                     isPassword ? Icons.visibility_off : Icons.visibility,
                   ),
                 )
                 : null,
         hintText: widget.hint,
-        hintStyle: MyTextStyles.font16BrownRegular,
+        hintStyle: MyTextStyles(context).font16BrownRegular,
         filled: true,
-        fillColor: Color(0xffF2E8E8),
+        fillColor: MyColors(context).secondaryColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide.none,
