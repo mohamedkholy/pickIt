@@ -23,7 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Search", style: MyTextStyles.font18BlackBold),
+        title: Text("Search", style: MyTextStyles(context).font18BlackBold),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -42,21 +42,21 @@ class _SearchScreenState extends State<SearchScreen> {
                           children: [
                             Icon(
                               Icons.search,
-                              color: MyColors.primaryColorDark,
+                              color: MyColors(context).primaryColorDark,
                               size: 26.dg,
                             ),
                             Text(
                               "Start typing to search for items.",
-                              style: MyTextStyles.font14BrownBold,
+                              style: MyTextStyles(context).font14BrownBold,
                             ),
                           ],
                         ),
                       );
                     }
                     if (state is Searching) {
-                      return const Center(
+                      return Center(
                         child: CircularProgressIndicator(
-                          color: MyColors.primaryColor,
+                          color: MyColors(context).primaryColor,
                         ),
                       );
                     }
@@ -71,12 +71,12 @@ class _SearchScreenState extends State<SearchScreen> {
                               children: [
                                 Icon(
                                   Icons.priority_high,
-                                  color: MyColors.primaryColorDark,
+                                  color: MyColors(context).primaryColorDark,
                                   size: 26.dg,
                                 ),
                                 Text(
                                   "No results for \"${_cubit.query}\"",
-                                  style: MyTextStyles.font14BrownBold,
+                                  style: MyTextStyles(context).font14BrownBold,
                                 ),
                               ],
                             ),

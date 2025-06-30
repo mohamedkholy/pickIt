@@ -29,11 +29,11 @@ class SellItem extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: item.category,
-                          style: MyTextStyles.font14BrownRegular,
+                          style: MyTextStyles(context).font14BrownRegular,
                         ),
                         TextSpan(
                           text: " . ${item.city}",
-                          style: MyTextStyles.font14BrownRegular,
+                          style: MyTextStyles(context).font14BrownRegular,
                         ),
                       ],
                     ),
@@ -41,13 +41,13 @@ class SellItem extends StatelessWidget {
                   SizedBox(height: 4.h),
                   Text(
                     item.title,
-                    style: MyTextStyles.font16BlackBold,
+                    style: MyTextStyles(context).font16BlackBold,
                     overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(height: 4.h),
                   Text(
                     "\$${item.price}",
-                    style: MyTextStyles.font14BrownRegular,
+                    style: MyTextStyles(context).font14BrownRegular,
                   ),
                 ],
               ),

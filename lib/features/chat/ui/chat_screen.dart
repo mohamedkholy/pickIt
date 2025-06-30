@@ -57,8 +57,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   decoration: BoxDecoration(
                     color:
                         isSeller
-                            ? MyColors.primaryColor
-                            : MyColors.primaryColorDark,
+                            ? MyColors(context).primaryColor
+                            : MyColors(context).primaryColorDark,
                     borderRadius: BorderRadius.circular(40.r),
                   ),
                   padding: EdgeInsets.all(5.r),
@@ -66,13 +66,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 SizedBox(width: 5.w),
                 Text(
                   isSeller ? "Selling to" : "Buying from",
-                  style: MyTextStyles.font14BrownBold,
+                  style: MyTextStyles(context).font14BrownBold,
                 ),
               ],
             ),
             Text(
               widget.chat.user.userName,
-              style: MyTextStyles.font18BlackBold,
+              style: MyTextStyles(context).font18BlackBold,
             ),
           ],
         ),
@@ -95,9 +95,9 @@ class _ChatScreenState extends State<ChatScreen> {
                           current is ChatMessagesError,
                   builder: (context, state) {
                     if (state is ChatLoading) {
-                      return const Center(
+                      return Center(
                         child: CircularProgressIndicator(
-                          color: MyColors.primaryColor,
+                          color: MyColors(context).primaryColor,
                         ),
                       );
                     }
@@ -147,9 +147,11 @@ class _ChatScreenState extends State<ChatScreen> {
                             onChanged: (value) {
                               setState(() {});
                             },
+                            maxLines: 3,
+                            minLines: 1,
                             decoration: InputDecoration(
                               suffixIcon: IconButton(
-                                color: MyColors.primaryColorDark,
+                                color: MyColors(context).primaryColorDark,
                                 onPressed:
                                     _messageController.text.isNotEmpty
                                         ? () {
@@ -168,9 +170,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                 icon: const Icon(Icons.send),
                               ),
                               hintText: "Write a message...",
-                              hintStyle: MyTextStyles.font16BrownRegular,
+                              hintStyle:
+                                  MyTextStyles(context).font16BrownRegular,
                               filled: true,
-                              fillColor: Color(0xffF2E8E8),
+                              fillColor: MyColors(context).secondaryColor,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8.r),
                                 borderSide: BorderSide.none,

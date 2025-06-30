@@ -24,7 +24,7 @@ class IconTextButton extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
         decoration: BoxDecoration(
-          border: Border.all(color: MyColors.primaryColorDark),
+          border: Border.all(color: MyColors(context).primaryColorDark),
           borderRadius: BorderRadius.circular(8.r),
         ),
         child: Stack(
@@ -32,7 +32,7 @@ class IconTextButton extends StatelessWidget {
             SvgPicture.asset(iconPath, width: 24.r, height: 24.r),
             Align(
               alignment: AlignmentDirectional.center,
-              child: Text(text, style: MyTextStyles.font14BrownBold),
+              child: Text(text, style: MyTextStyles(context).font14BrownBold),
             ),
           ],
         ),

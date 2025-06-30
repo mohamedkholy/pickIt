@@ -56,7 +56,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
       appBar: AppBar(
         actionsPadding: EdgeInsetsDirectional.only(end: 16.w),
         title: const Text('Browse'),
-        titleTextStyle: MyTextStyles.font18BlackBold,
+        titleTextStyle: MyTextStyles(context).font18BlackBold,
         centerTitle: true,
       ),
       body: SafeArea(
@@ -73,7 +73,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                   height: 48.h,
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   decoration: BoxDecoration(
-                    color: MyColors.secondaryColor,
+                    color: MyColors(context).secondaryColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -82,13 +82,16 @@ class _BrowseScreenState extends State<BrowseScreen> {
                         Assets.assetsImagesSvgSearch,
                         width: 24.w,
                         height: 24.h,
-                        colorFilter: const ColorFilter.mode(
-                          MyColors.primaryColorDark,
+                        colorFilter: ColorFilter.mode(
+                          MyColors(context).primaryColorDark,
                           BlendMode.srcIn,
                         ),
                       ),
                       const SizedBox(width: 10),
-                      Text("Search", style: MyTextStyles.font16BrownRegular),
+                      Text(
+                        "Search",
+                        style: MyTextStyles(context).font16BrownRegular,
+                      ),
                     ],
                   ),
                 ),
@@ -118,8 +121,8 @@ class _BrowseScreenState extends State<BrowseScreen> {
                             borderRadius: BorderRadius.circular(8.r),
                             color:
                                 selectedCategory == categories[index]
-                                    ? MyColors.primaryColorDark
-                                    : MyColors.secondaryColor,
+                                    ? MyColors(context).primaryColorDark
+                                    : MyColors(context).secondaryColor,
                           ),
                           margin: EdgeInsetsDirectional.only(end: 12.w),
                           padding: EdgeInsets.symmetric(
@@ -128,7 +131,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                           ),
                           child: Text(
                             categories[index],
-                            style: MyTextStyles.font14MediumBlack,
+                            style: MyTextStyles(context).font14MediumBlack,
                           ),
                         ),
                       ),
@@ -141,18 +144,33 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 child: BlocBuilder<BrowseCubit, BrowseState>(
                   builder: (context, state) {
                     if (state is BrowseLoading) {
-                      return const Center(
+                      return Center(
                         child: CircularProgressIndicator(
-                          color: MyColors.primaryColor,
+                          color: MyColors(context).primaryColor,
                         ),
                       );
                     }
                     if (state is BrowseError) {
-                      return Center(child: Text(state.message));
+                      return Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.priority_high,
+                              color: MyColors(context).primaryColorDark,
+                              size: 26.dg,
+                            ),
+                            Text(
+                              state.message,
+                              style: MyTextStyles(context).font14BrownBold,
+                            ),
+                          ],
+                        ),
+                      );
                     }
                     if (state is BrowseSuccess) {
                       return RefreshIndicator(
-                        color: MyColors.primaryColor,
+                        color: MyColors(context).primaryColor,
                         onRefresh: () async {
                           await cubit.getItems();
                         },

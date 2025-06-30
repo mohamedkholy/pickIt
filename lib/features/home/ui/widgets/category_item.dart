@@ -40,7 +40,7 @@ class CategoryItem extends StatelessWidget {
             Expanded(
               child: Text(
                 categories.keys.toList()[index],
-                style: MyTextStyles.font16BlackBold,
+                style: MyTextStyles(context).font16BlackBold,
               ),
             ),
           ],

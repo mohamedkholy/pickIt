@@ -32,10 +32,10 @@ class _ChatsScreenState extends State<ChatsScreen> {
     return Scaffold(
       backgroundColor:
           FirebaseAuth.instance.currentUser == null
-              ? Colors.white
-              : MyColors.secondaryColor,
+              ? MyColors(context).white
+              : MyColors(context).secondaryColor,
       appBar: AppBar(
-        title: Text("Chats", style: MyTextStyles.font18BlackBold),
+        title: Text("Chats", style: MyTextStyles(context).font18BlackBold),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -45,13 +45,15 @@ class _ChatsScreenState extends State<ChatsScreen> {
               return Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: NotSignedInWidget(), 
+                  child: NotSignedInWidget(),
                 ),
               );
             }
             if (state is ChatsLoading) {
-              return const Center(
-                child: CircularProgressIndicator(color: MyColors.primaryColor),
+              return Center(
+                child: CircularProgressIndicator(
+                  color: MyColors(context).primaryColor,
+                ),
               );
             }
             if (state is ChatsError) {

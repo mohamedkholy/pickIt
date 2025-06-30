@@ -38,9 +38,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final ImagePicker _imagePicker = ImagePicker();
 
-
-
- @override
+  @override
   void initState() {
     _postItemCubit.checkUserLoggedIn();
     super.initState();
@@ -60,7 +58,10 @@ class _PostItemScreenState extends State<PostItemScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Post an Item", style: MyTextStyles.font18BlackBold),
+        title: Text(
+          "Post an Item",
+          style: MyTextStyles(context).font18BlackBold,
+        ),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -91,12 +92,12 @@ class _PostItemScreenState extends State<PostItemScreen> {
                   context: context,
                   barrierDismissible: false,
                   builder:
-                      (context) => const PopScope(
+                      (context) => PopScope(
                         canPop: false,
 
                         child: Center(
                           child: CircularProgressIndicator(
-                            color: MyColors.primaryColor,
+                            color: MyColors(context).primaryColor,
                           ),
                         ),
                       ),
@@ -183,7 +184,10 @@ class _PostItemScreenState extends State<PostItemScreen> {
                         maxLines: 5,
                       ),
                       SizedBox(height: 24.h),
-                      Text("Photos", style: MyTextStyles.font22BlackBold),
+                      Text(
+                        "Photos",
+                        style: MyTextStyles(context).font22BlackBold,
+                      ),
                       SizedBox(height: 24.h),
                       if (_photos.isEmpty)
                         AddPhotosLayout(
@@ -215,7 +219,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
                                 width: 100.w,
                                 height: 130.h,
                                 decoration: BoxDecoration(
-                                  color: MyColors.secondaryColor,
+                                  color: MyColors(context).secondaryColor,
                                   borderRadius: BorderRadius.circular(8.r),
                                 ),
                                 child: const Icon(

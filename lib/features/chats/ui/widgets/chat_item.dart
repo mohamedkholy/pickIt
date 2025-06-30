@@ -19,7 +19,7 @@ class ChatItem extends StatelessWidget {
       onTap: () => Navigator.pushNamed(context, Routes.chat, arguments: chat),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: MyColors(context).white,
           borderRadius: BorderRadius.circular(16.r),
         ),
         padding: EdgeInsetsDirectional.symmetric(
@@ -35,8 +35,8 @@ class ChatItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     color:
                         isSeller
-                            ? MyColors.primaryColor
-                            : MyColors.primaryColorDark,
+                            ? MyColors(context).primaryColor
+                            : MyColors(context).primaryColorDark,
                     borderRadius: BorderRadius.circular(40.r),
                   ),
                   padding: EdgeInsets.all(5.r),
@@ -44,7 +44,7 @@ class ChatItem extends StatelessWidget {
                 SizedBox(width: 5.w),
                 Text(
                   isSeller ? "Selling" : "Buying",
-                  style: MyTextStyles.font14BrownBold,
+                  style: MyTextStyles(context).font14BrownBold,
                 ),
               ],
             ),
@@ -70,13 +70,13 @@ class ChatItem extends StatelessWidget {
                           children: [
                             Text(
                               chat.user.userName,
-                              style: MyTextStyles.font16BlackBold,
+                              style: MyTextStyles(context).font16BlackBold,
                               overflow: TextOverflow.ellipsis,
                             ),
                             if (chat.lastMessage != null)
                               Text(
                                 chat.lastMessage!,
-                                style: MyTextStyles.font14BrownRegular,
+                                style: MyTextStyles(context).font14BrownRegular,
                                 overflow: TextOverflow.ellipsis,
                               ),
                           ],
@@ -89,7 +89,7 @@ class ChatItem extends StatelessWidget {
                             SizedBox(width: 8.w),
                             Container(
                               decoration: BoxDecoration(
-                                color: MyColors.primaryColor,
+                                color: MyColors(context).primaryColor,
                                 borderRadius: BorderRadius.circular(40.r),
                               ),
                               padding: EdgeInsets.symmetric(
@@ -98,7 +98,7 @@ class ChatItem extends StatelessWidget {
                               ),
                               child: Text(
                                 "${chat.unreadMessages}",
-                                style: MyTextStyles.font14WhiteBold,
+                                style: MyTextStyles(context).font14WhiteBold,
                               ),
                             ),
                             SizedBox(width: 8.w),
@@ -121,7 +121,7 @@ class ChatItem extends StatelessWidget {
                       ),
                       Text(
                         chat.item.title,
-                        style: MyTextStyles.font14BrownBold,
+                        style: MyTextStyles(context).font14BrownBold,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ],

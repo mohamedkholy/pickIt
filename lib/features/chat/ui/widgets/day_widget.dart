@@ -15,7 +15,7 @@ class DayWidget extends StatelessWidget {
     return Center(
       child: Container(
         decoration: BoxDecoration(
-          color: MyColors.primaryColorDark,
+          color: MyColors(context).primaryColorDark,
           borderRadius: BorderRadius.circular(8.r),
         ),
         margin: EdgeInsets.symmetric(vertical: 16.h),
@@ -27,7 +27,7 @@ class DayWidget extends StatelessWidget {
               : isYesterday
               ? "Yesterday"
               : DateFormat("dd MMMM yyyy").format(timestamp),
-          style: MyTextStyles.font14WhiteBold,
+          style: MyTextStyles(context).font14WhiteBold,
         ),
       ),
     );

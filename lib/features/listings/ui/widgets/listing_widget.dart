@@ -52,7 +52,7 @@ class _ListingWidgetState extends State<ListingWidget> {
                     ListingStatus.inactive => "Active",
                     ListingStatus.sold => "Available",
                     null => "",
-                  }, style: MyTextStyles.font14WhiteBold),
+                  }, style: MyTextStyles(context).font14WhiteBold),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     foregroundColor: Colors.white,
@@ -97,7 +97,7 @@ class _ListingWidgetState extends State<ListingWidget> {
                           ? 'Inactive'
                           : "Sold",
 
-                      style: MyTextStyles.font14WhiteBold,
+                      style: MyTextStyles(context).font14WhiteBold,
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
@@ -116,7 +116,10 @@ class _ListingWidgetState extends State<ListingWidget> {
                     _cubit.deleteItem(widget.item);
                   },
                   icon: Icon(Icons.delete, size: 16.dg),
-                  label: Text("Delete", style: MyTextStyles.font14WhiteBold),
+                  label: Text(
+                    "Delete",
+                    style: MyTextStyles(context).font14WhiteBold,
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                     foregroundColor: Colors.white,

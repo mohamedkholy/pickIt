@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 
 class MyDropdown extends StatelessWidget {
@@ -10,11 +11,11 @@ class MyDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownMenu(
-      textStyle: MyTextStyles.font16BlackRegular,
+      textStyle: MyTextStyles(context).font16BlackRegular,
       hintText: "Category",
       inputDecorationTheme: InputDecorationTheme(
-        hintStyle: MyTextStyles.font16BrownRegular,
-        fillColor: Color(0xffF2E8E8),
+        hintStyle: MyTextStyles(context).font16BrownRegular,
+        fillColor: MyColors(context).secondaryColor,
         filled: true,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),

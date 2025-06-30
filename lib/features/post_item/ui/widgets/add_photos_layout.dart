@@ -24,18 +24,18 @@ class _AddPhotosLayoutState extends State<AddPhotosLayout> {
         radius: Radius.circular(8.r),
         strokeWidth: 3.w,
         dashPattern: [6.w, 6.w],
-        color: MyColors.secondaryColor,
+        color: MyColors(context).secondaryColor,
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 56.h),
       ),
       child: SizedBox(
         width: double.infinity,
         child: Column(
           children: [
-            Text("Add photos", style: MyTextStyles.font18BlackBold),
+            Text("Add photos", style: MyTextStyles(context).font18BlackBold),
             SizedBox(height: 8.h),
             Text(
               "Add photos to show the item's condition",
-              style: MyTextStyles.font14BlackRegular,
+              style: MyTextStyles(context).font14BlackRegular,
             ),
             SizedBox(height: 24.h),
             MaterialButton(
@@ -43,7 +43,7 @@ class _AddPhotosLayoutState extends State<AddPhotosLayout> {
                 horizontal: 16.w,
                 vertical: 10.h,
               ),
-              color: MyColors.secondaryColor,
+              color: MyColors(context).secondaryColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.r),
               ),
@@ -58,7 +58,10 @@ class _AddPhotosLayoutState extends State<AddPhotosLayout> {
                   });
                 });
               },
-              child: Text("Add photos", style: MyTextStyles.font14BlackBold),
+              child: Text(
+                "Add photos",
+                style: MyTextStyles(context).font14BlackBold,
+              ),
             ),
           ],
         ),

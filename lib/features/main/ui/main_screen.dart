@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/di/dependency_injection.dart';
+import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/browse/logic/browse_cubit.dart';
 import 'package:pickit/features/browse/ui/browse_screen.dart';
@@ -41,12 +42,11 @@ class _MainScreenState extends State<MainScreen> {
           iconSize: 24.h,
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: const Color(0xff994D52),
-          selectedLabelStyle: MyTextStyles.font12MediumBlack,
-          unselectedLabelStyle: MyTextStyles.font12MediumBlack.copyWith(
-            color: const Color(0xff994D52),
-          ),
+          selectedItemColor: MyColors(context).whiteText,
+          unselectedItemColor: MyColors(context).primaryColorDark,
+          selectedLabelStyle: MyTextStyles(context).font12MediumBlack,
+          unselectedLabelStyle: MyTextStyles(context).font12MediumBlack
+              .copyWith(color: MyColors(context).primaryColorDark),
           onTap: (value) {
             setState(() {
               _selectedIndex = value;

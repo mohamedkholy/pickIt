@@ -6,7 +6,7 @@ import 'package:pickit/core/theming/my_text_styles.dart';
 class ProfileOptionsItem extends StatelessWidget {
   final IconData icon;
   final String text;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const ProfileOptionsItem({
     super.key,
@@ -17,24 +17,23 @@ class ProfileOptionsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
-        color: Colors.white,
-        width: double.infinity,
+        width: 300,
         margin: EdgeInsets.only(bottom: 16.h),
         child: Row(
           children: [
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.r),
-                color: MyColors.secondaryColor,
+                color: MyColors(context).secondaryColor,
               ),
               padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
               child: Icon(icon, size: 20.dg),
             ),
             SizedBox(width: 16.w),
-            Text(text, style: MyTextStyles.font16BlackRegular),
+            Text(text, style: MyTextStyles(context).font16BlackRegular),
           ],
         ),
       ),

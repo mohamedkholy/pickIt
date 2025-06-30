@@ -39,11 +39,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             context: context,
             barrierDismissible: false,
             builder:
-                (context) => const PopScope(
+                (context) => PopScope(
                   canPop: false,
                   child: Center(
                     child: CircularProgressIndicator(
-                      color: MyColors.primaryColor,
+                      color: MyColors(context).primaryColor,
                     ),
                   ),
                 ),
@@ -63,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Sign up", style: MyTextStyles.font18BlackBold),
+          title: Text("Sign up", style: MyTextStyles(context).font18BlackBold),
           centerTitle: true,
         ),
         body: SafeArea(
@@ -153,7 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         children: [
                           TextSpan(
                             text: "Already have an account?",
-                            style: MyTextStyles.font14BrownRegular,
+                            style: MyTextStyles(context).font14BrownRegular,
                           ),
                           TextSpan(
                             recognizer:
@@ -162,7 +162,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     Navigator.pop(context);
                                   },
                             text: " Log in",
-                            style: MyTextStyles.font14BrownBold,
+                            style: MyTextStyles(context).font14BrownBold,
                           ),
                         ],
                       ),
@@ -171,14 +171,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: 24.h),
                   Row(
                     children: [
-                      const Expanded(
-                        child: Divider(color: MyColors.primaryColorDark),
+                      Expanded(
+                        child: Divider(
+                          color: MyColors(context).primaryColorDark,
+                        ),
                       ),
                       SizedBox(width: 12.w),
-                      Text("OR", style: MyTextStyles.font14BrownRegular),
+                      Text(
+                        "OR",
+                        style: MyTextStyles(context).font14BrownRegular,
+                      ),
                       SizedBox(width: 12.w),
-                      const Expanded(
-                        child: Divider(color: MyColors.primaryColorDark),
+                      Expanded(
+                        child: Divider(
+                          color: MyColors(context).primaryColorDark,
+                        ),
                       ),
                     ],
                   ),

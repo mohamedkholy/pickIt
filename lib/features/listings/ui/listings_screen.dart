@@ -35,7 +35,7 @@ class _ListingsScreenState extends State<ListingsScreen> {
       initialIndex: _selectInitialIndex(widget.listing),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Listings", style: MyTextStyles.font18BlackBold),
+          title: Text("Listings", style: MyTextStyles(context).font18BlackBold),
           centerTitle: true,
         ),
         body: SafeArea(
@@ -45,19 +45,18 @@ class _ListingsScreenState extends State<ListingsScreen> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: MyColors.secondaryColor,
+                    color: MyColors(context).secondaryColor,
                     borderRadius: BorderRadius.circular(8.r),
                   ),
                   child: TabBar(
                     padding: EdgeInsets.symmetric(horizontal: 8.w),
-                    overlayColor: const WidgetStatePropertyAll(
-                      MyColors.secondaryColor,
+                    overlayColor: WidgetStatePropertyAll(
+                      MyColors(context).secondaryColor,
                     ),
-
-                    indicatorColor: MyColors.primaryColorDark,
-                    labelColor: MyColors.primaryColorDark,
-                    unselectedLabelColor: Colors.black,
-                    labelStyle: MyTextStyles.font16BlackBold,
+                    indicatorColor: MyColors(context).primaryColorDark,
+                    labelColor: MyColors(context).primaryColorDark,
+                    unselectedLabelColor: MyColors(context).whiteText,
+                    labelStyle: MyTextStyles(context).font16BlackBold,
                     dividerColor: Colors.transparent,
                     indicatorSize: TabBarIndicatorSize.tab,
                     tabs: const [
