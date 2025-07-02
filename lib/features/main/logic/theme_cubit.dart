@@ -30,8 +30,6 @@ class ThemeCubit extends Cubit<ThemeMode> {
     } else {
       this.isDarkMode = isDarkMode;
     }
-   print("==================${this.isDarkMode}=======================");
-
     this.isDarkMode ? emit(ThemeMode.dark) : emit(ThemeMode.light);
   }
 }

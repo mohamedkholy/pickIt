@@ -14,7 +14,6 @@ class PostItemCubit extends Cubit<PostItemState> {
 
   void checkUserLoggedIn() {
     final isLoggedIn = _postItemRepo.isUserLoggedIn();
-    print(isLoggedIn);
     if (!isLoggedIn) {
       emit(UserNotLoggedIn());
     } else {

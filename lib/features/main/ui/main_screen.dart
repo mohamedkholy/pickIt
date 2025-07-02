@@ -8,6 +8,7 @@ import 'package:pickit/features/browse/logic/browse_cubit.dart';
 import 'package:pickit/features/browse/ui/browse_screen.dart';
 import 'package:pickit/features/chats/logic/chats_cubit.dart';
 import 'package:pickit/features/chats/ui/chats_screen.dart';
+import 'package:pickit/features/home/logic/home_cubit.dart';
 import 'package:pickit/features/home/ui/home_screen.dart';
 import 'package:pickit/features/main/logic/main_cubit.dart';
 import 'package:pickit/features/main/logic/main_state.dart';
@@ -64,7 +65,10 @@ class _MainScreenState extends State<MainScreen> {
           key: cubit.indexedStackKey,
           index: _selectedIndex,
           children: [
-            const HomeScreen(),
+            BlocProvider(
+              create: (context) => getIt<HomeCubit>(),
+              child: const HomeScreen(),
+            ),
             BlocProvider(
               create: (context) => getIt<BrowseCubit>(),
               child: BrowseScreen(
