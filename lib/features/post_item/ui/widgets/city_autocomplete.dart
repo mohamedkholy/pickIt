@@ -50,7 +50,6 @@ class _CityAutocompleteState extends State<CityAutocomplete> {
 
                 return localities;
               } catch (e) {
-                print("Error getting placemarks: $e");
                 return const Iterable<String>.empty();
               }
             },
