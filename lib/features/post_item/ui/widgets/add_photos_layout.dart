@@ -35,6 +35,7 @@ class _AddPhotosLayoutState extends State<AddPhotosLayout> {
             SizedBox(height: 8.h),
             Text(
               "Add photos to show the item's condition",
+              textAlign: TextAlign.center,
               style: MyTextStyles(context).font14BlackRegular,
             ),
             SizedBox(height: 24.h),
