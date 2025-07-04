@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:pickit/features/post_item/data/models/item.dart';
 
 sealed class ProfileState {}
 

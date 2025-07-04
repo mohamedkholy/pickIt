@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pickit/core/constants/shared_preferences_constants.dart';
-import 'package:pickit/core/theming/my_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @injectable

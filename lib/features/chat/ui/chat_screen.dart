@@ -1,19 +1,15 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/chat/data/models/message.dart';
 import 'package:pickit/features/chat/logic/chat_cubit.dart';
 import 'package:pickit/features/chat/logic/chat_state.dart';
-import 'package:pickit/features/chat/ui/widgets/day_widget.dart';
 import 'package:pickit/features/chat/ui/widgets/item_card.dart';
 import 'package:pickit/features/chat/ui/widgets/my_chat_item.dart';
 import 'package:pickit/features/chat/ui/widgets/other_chat_item.dart';
 import 'package:pickit/features/chats/data/models/chat.dart';
-import 'package:pickit/features/post_item/data/models/item.dart';
 
 class ChatScreen extends StatefulWidget {
   final Chat chat;

@@ -9,7 +9,7 @@ class LoginRepo {
 
   Future<bool> loginWithEmailAndPassword(String email, String password) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -35,7 +35,7 @@ class LoginRepo {
       if (userCredential.user == null) {
         return false;
       }
-      bool? isNewUser = userCredential.additionalUserInfo?.isNewUser;
+      final bool? isNewUser = userCredential.additionalUserInfo?.isNewUser;
       if (isNewUser == true) {
         //todo: add user to database
       }

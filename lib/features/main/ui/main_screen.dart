@@ -26,7 +26,12 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  late final MainCubit cubit = context.read<MainCubit>();
+  late final MainCubit _cubit = context.read<MainCubit>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +67,7 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
         body: IndexedStack(
-          key: cubit.indexedStackKey,
+          key: _cubit.indexedStackKey,
           index: _selectedIndex,
           children: [
             BlocProvider(
@@ -72,8 +77,8 @@ class _MainScreenState extends State<MainScreen> {
             BlocProvider(
               create: (context) => getIt<BrowseCubit>(),
               child: BrowseScreen(
-                key: ValueKey(cubit.state.category),
-                category: cubit.state.category,
+                key: ValueKey(_cubit.state.category),
+                category: _cubit.state.category,
               ),
             ),
             BlocProvider(

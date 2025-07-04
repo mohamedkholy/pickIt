@@ -7,7 +7,6 @@ import 'package:pickit/features/chat/ui/chat_screen.dart';
 import 'package:pickit/features/chats/data/models/chat.dart';
 import 'package:pickit/features/home/ui/home_screen.dart';
 import 'package:pickit/features/item_details/ui/item_details_screen.dart';
-import 'package:pickit/features/listings/data/models/listing_status.dart';
 import 'package:pickit/features/listings/logic/listings_cubit.dart';
 import 'package:pickit/features/listings/ui/listings_screen.dart';
 import 'package:pickit/features/login/logic/login_cubit.dart';

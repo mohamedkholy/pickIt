@@ -82,7 +82,14 @@ class MyTextStyles {
       );
 
   TextStyle get font16WhiteBold => TextStyle(
-        fontSize: 16,
+        fontSize: 16.sp,
+        fontWeight: FontWeightHelper.bold,
+        color: colors.whiteText,
+      );
+
+
+TextStyle get font20WhiteBold => TextStyle(
+        fontSize: 20.sp,
         fontWeight: FontWeightHelper.bold,
         color: colors.whiteText,
       );
