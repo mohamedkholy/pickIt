@@ -138,11 +138,14 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                   ),
                         ),
                         SizedBox(width: 8.w),
-                        Text(
-                          widget.item.seller.userName,
-                          style: MyTextStyles(context).font16BlackBold,
+                        Expanded(
+                          child: Text(
+                            widget.item.seller.userName,
+                            overflow: TextOverflow.ellipsis,
+                            style: MyTextStyles(context).font16BlackBold,
+                          ),
                         ),
-                        const Spacer(),
+
                         if (FirebaseAuth.instance.currentUser?.uid !=
                             widget.item.seller.userId)
                           MyButton(

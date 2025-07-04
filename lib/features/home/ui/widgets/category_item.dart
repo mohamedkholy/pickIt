@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,7 @@ class CategoryItem extends StatelessWidget {
         context.read<MainCubit>().moveToBrowse(categories.keys.toList()[index]);
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0xffE8D1D1)),
           borderRadius: BorderRadius.circular(8.r),
@@ -35,11 +36,13 @@ class CategoryItem extends StatelessWidget {
               categories.values.toList()[index],
               width: 40.w,
               height: 40.h,
+              fit: BoxFit.fill,
             ),
             SizedBox(width: 8.w),
             Expanded(
-              child: Text(
+              child: AutoSizeText(
                 categories.keys.toList()[index],
+                maxLines: 1,
                 style: MyTextStyles(context).font16BlackBold,
               ),
             ),

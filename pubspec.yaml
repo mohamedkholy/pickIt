@@ -63,6 +63,7 @@ dependencies:
   shimmer_animation: ^2.2.2
   connectivity_plus: ^6.1.4
   flutter_native_splash: ^2.4.6
+  auto_size_text: ^3.0.0
   
 
 dev_dependencies:
