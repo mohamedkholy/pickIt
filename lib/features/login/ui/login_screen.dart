@@ -126,7 +126,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 12.h),
                   Align(
-                    alignment: Alignment.center,
                     child: RichText(
                       text: TextSpan(
                         children: [

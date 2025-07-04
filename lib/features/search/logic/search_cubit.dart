@@ -17,7 +17,7 @@ class SearchCubit extends Cubit<SearchState> {
     }
     this.query = query;
     emit(Searching());
-    final items = await _repo.search(query!);
+    final items = await _repo.search(query);
     if (items != null) {
       emit(Searched(items: items));
     } else {

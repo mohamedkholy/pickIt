@@ -34,7 +34,7 @@ class ItemCard extends StatelessWidget {
             ),
             SizedBox(width: 8.w),
             Text(item.title, style: MyTextStyles(context).font16BlackBold),
-            Spacer(),
+            const Spacer(),
             Text(
               "\$${item.price.toString()}",
               style: MyTextStyles(context).font16BlackBold,
