@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ItemImage extends StatelessWidget {
   final String photo;
@@ -11,24 +10,24 @@ class ItemImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 8.w, bottom: 8.h),
+      padding: EdgeInsets.only(right: 8, bottom: 8),
       child: Stack(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(8.r),
+            borderRadius: BorderRadius.circular(8),
             child: Image.file(
               File(photo),
-              width: 100.w,
-              height: 130.h,
+              width: 100,
+              height: 130,
               fit: BoxFit.cover,
             ),
           ),
           Positioned(
-            top: 3.h,
-            right: 3.w,
+            top: 3,
+            right: 3,
             child: GestureDetector(
               onTap: () => onDelete(photo),
-              child: Icon(Icons.clear, size: 20.dg, color: Colors.grey),
+              child: Icon(Icons.clear, size: 20, color: Colors.grey),
             ),
           ),
         ],

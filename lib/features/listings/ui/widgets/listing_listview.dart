@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/listings/data/models/listing_status.dart';
@@ -40,7 +39,7 @@ class _ListingListViewState extends State<ListingListView> {
               Icon(
                 Icons.search,
                 color: MyColors(context).primaryColorDark,
-                size: 26.dg,
+                size: 26,
               ),
               Text(
                 "No ${widget.status.name} items was found",

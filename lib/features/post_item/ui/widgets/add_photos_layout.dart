@@ -1,6 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
@@ -21,32 +20,32 @@ class _AddPhotosLayoutState extends State<AddPhotosLayout> {
   Widget build(BuildContext context) {
     return DottedBorder(
       options: RoundedRectDottedBorderOptions(
-        radius: Radius.circular(8.r),
-        strokeWidth: 3.w,
-        dashPattern: [6.w, 6.w],
+        radius: Radius.circular(8),
+        strokeWidth: 3,
+        dashPattern: [6, 6],
         color: MyColors(context).secondaryColor,
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 56.h),
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 56),
       ),
       child: SizedBox(
         width: double.infinity,
         child: Column(
           children: [
             Text("Add photos", style: MyTextStyles(context).font18BlackBold),
-            SizedBox(height: 8.h),
+            SizedBox(height: 8),
             Text(
               "Add photos to show the item's condition",
               textAlign: TextAlign.center,
               style: MyTextStyles(context).font14BlackRegular,
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 24),
             MaterialButton(
               padding: EdgeInsetsDirectional.symmetric(
-                horizontal: 16.w,
-                vertical: 10.h,
+                horizontal: 16,
+                vertical: 10,
               ),
               color: MyColors(context).secondaryColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.r),
+                borderRadius: BorderRadius.circular(8),
               ),
               onPressed: () {
                 _imagePicker.pickMultiImage().then((value) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/chat/data/models/message.dart';
@@ -55,11 +55,11 @@ class _ChatScreenState extends State<ChatScreen> {
                         isSeller
                             ? MyColors(context).primaryColor
                             : MyColors(context).primaryColorDark,
-                    borderRadius: BorderRadius.circular(40.r),
+                    borderRadius: BorderRadius.circular(40),
                   ),
-                  padding: EdgeInsets.all(5.r),
+                  padding: EdgeInsets.all(5),
                 ),
-                SizedBox(width: 5.w),
+                SizedBox(width: 5),
                 Text(
                   isSeller ? "Selling to" : "Buying from",
                   style: MyTextStyles(context).font14BrownBold,
@@ -77,11 +77,11 @@ class _ChatScreenState extends State<ChatScreen> {
       body: SafeArea(
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             children: [
               ItemCard(item: widget.chat.item),
-              SizedBox(height: 16.h),
+              SizedBox(height: 16),
               Expanded(
                 child: BlocBuilder<ChatCubit, ChatState>(
                   buildWhen:
@@ -171,7 +171,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               filled: true,
                               fillColor: MyColors(context).secondaryColor,
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8.r),
+                                borderRadius: BorderRadius.circular(8),
                                 borderSide: BorderSide.none,
                               ),
                             ),

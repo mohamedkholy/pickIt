@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 
@@ -68,7 +68,7 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
                     });
                   },
                   icon: Icon(
-                    size: 24.r,
+                    size: 24,
                     color: MyColors(context).primaryColorDark,
                     isPassword ? Icons.visibility_off : Icons.visibility,
                   ),
@@ -79,7 +79,7 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
         filled: true,
         fillColor: MyColors(context).secondaryColor,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide.none,
         ),
       ),

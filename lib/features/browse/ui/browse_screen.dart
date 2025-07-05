@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/routing/routes.dart';
@@ -54,14 +53,14 @@ class _BrowseScreenState extends State<BrowseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actionsPadding: EdgeInsetsDirectional.only(end: 16.w),
+        actionsPadding: EdgeInsetsDirectional.only(end: 16),
         title: const Text('Browse'),
         titleTextStyle: MyTextStyles(context).font18BlackBold,
         centerTitle: true,
       ),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -70,8 +69,8 @@ class _BrowseScreenState extends State<BrowseScreen> {
                   Navigator.pushNamed(context, Routes.search);
                 },
                 child: Container(
-                  height: 48.h,
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  height: 48,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                     color: MyColors(context).secondaryColor,
                     borderRadius: BorderRadius.circular(10),
@@ -80,8 +79,8 @@ class _BrowseScreenState extends State<BrowseScreen> {
                     children: [
                       SvgPicture.asset(
                         Assets.assetsImagesSvgSearch,
-                        width: 24.w,
-                        height: 24.h,
+                        width: 24,
+                        height: 24,
                         colorFilter: ColorFilter.mode(
                           MyColors(context).primaryColorDark,
                           BlendMode.srcIn,
@@ -96,7 +95,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20.h),
+              SizedBox(height: 20),
               SingleChildScrollView(
                 controller: _scrollController,
                 scrollDirection: Axis.horizontal,
@@ -118,16 +117,16 @@ class _BrowseScreenState extends State<BrowseScreen> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.r),
+                            borderRadius: BorderRadius.circular(8),
                             color:
                                 selectedCategory == categories[index]
                                     ? MyColors(context).primaryColorDark
                                     : MyColors(context).secondaryColor,
                           ),
-                          margin: EdgeInsetsDirectional.only(end: 12.w),
+                          margin: EdgeInsetsDirectional.only(end: 12),
                           padding: EdgeInsets.symmetric(
-                            horizontal: 16.w,
-                            vertical: 6.h,
+                            horizontal: 16,
+                            vertical: 6,
                           ),
                           child: Text(
                             categories[index],
@@ -139,7 +138,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 24.h),
+              SizedBox(height: 24),
               Expanded(
                 child: BlocBuilder<BrowseCubit, BrowseState>(
                   builder: (context, state) {
@@ -158,7 +157,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                             Icon(
                               Icons.priority_high,
                               color: MyColors(context).primaryColorDark,
-                              size: 26.dg,
+                              size: 26,
                             ),
                             Text(
                               state.message,

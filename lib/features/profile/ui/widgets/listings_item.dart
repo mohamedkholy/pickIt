@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
@@ -34,18 +33,18 @@ class ListingsItem extends StatelessWidget {
         });
       },
       child: Padding(
-        padding: EdgeInsets.only(bottom: 16.h),
+        padding: EdgeInsets.only(bottom: 16),
         child: Row(
           children: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.r),
+                borderRadius: BorderRadius.circular(8),
                 color: MyColors(context).secondaryColor,
               ),
-              padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
-              child: Icon(icon, size: 20.dg),
+              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+              child: Icon(icon, size: 20),
             ),
-            SizedBox(width: 16.w),
+            SizedBox(width: 16),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/post_item/data/models/item.dart';
@@ -16,7 +16,7 @@ class SellItem extends StatelessWidget {
         Navigator.pushNamed(context, Routes.itemDetails, arguments: item);
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 16.h),
+        margin: EdgeInsets.symmetric(vertical: 16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -38,13 +38,13 @@ class SellItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 4.h),
+                  SizedBox(height: 4),
                   Text(
                     item.title,
                     style: MyTextStyles(context).font16BlackBold,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 4.h),
+                  SizedBox(height: 4),
                   Text(
                     "\$${item.price}",
                     style: MyTextStyles(context).font14BrownRegular,
@@ -53,12 +53,12 @@ class SellItem extends StatelessWidget {
               ),
             ),
             ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(8),
               child: CachedNetworkImage(
                 imageUrl: item.photos.first,
                 fit: BoxFit.cover,
-                width: 130.w,
-                height: 70.h,
+                width: 130,
+                height: 70,
               ),
             ),
           ],

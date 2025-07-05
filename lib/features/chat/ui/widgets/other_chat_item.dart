@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:intl/intl.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/theming/my_colors.dart';
@@ -25,7 +25,7 @@ class OtherChatItem extends StatelessWidget {
     return IntrinsicHeight(
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.only(bottom: 16.h),
+        margin: EdgeInsets.only(bottom: 16),
         child: Column(
           children: [
             if (isNewDay) DayWidget(timestamp: message.timestamp),
@@ -34,17 +34,17 @@ class OtherChatItem extends StatelessWidget {
                 Align(
                   alignment: AlignmentDirectional.bottomEnd,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(40.r),
+                    borderRadius: BorderRadius.circular(40),
                     child: CachedNetworkImage(
                       imageUrl:
                           user.userImageUrl ??
                           Assets.assetsImagesPngProfileAvatar,
-                      width: 40.r,
-                      height: 40.r,
+                      width: 40,
+                      height: 40,
                     ),
                   ),
                 ),
-                SizedBox(width: 16.w),
+                SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,22 +55,22 @@ class OtherChatItem extends StatelessWidget {
                             user.userName,
                             style: MyTextStyles(context).font13BlackRegular,
                           ),
-                          SizedBox(width: 4.w),
+                          SizedBox(width: 4),
                           Text(
                             DateFormat('HH:mm').format(message.timestamp),
                             style: MyTextStyles(context).font13BrownRegular,
                           ),
                         ],
                       ),
-                      SizedBox(height: 4.h),
+                      SizedBox(height: 4),
                       Container(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 16.w,
-                          vertical: 12.h,
+                          horizontal: 16,
+                          vertical: 12,
                         ),
                         decoration: BoxDecoration(
                           color: MyColors(context).secondaryColor,
-                          borderRadius: BorderRadius.circular(8.r),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
                           message.message,

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/listings/data/models/listing_status.dart';
@@ -42,16 +41,16 @@ class _ListingsScreenState extends State<ListingsScreen> {
         ),
         body: SafeArea(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: Column(
               children: [
                 Container(
                   decoration: BoxDecoration(
                     color: MyColors(context).secondaryColor,
-                    borderRadius: BorderRadius.circular(8.r),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   child: TabBar(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w),
+                    padding: EdgeInsets.symmetric(horizontal: 8),
                     overlayColor: WidgetStatePropertyAll(
                       MyColors(context).secondaryColor,
                     ),

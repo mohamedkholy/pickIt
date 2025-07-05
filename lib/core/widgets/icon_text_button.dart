@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter_svg/svg.dart';
 
 import 'package:pickit/core/theming/my_colors.dart';
@@ -22,14 +22,14 @@ class IconTextButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
+        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         decoration: BoxDecoration(
           border: Border.all(color: MyColors(context).primaryColorDark),
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Stack(
           children: [
-            SvgPicture.asset(iconPath, width: 24.r, height: 24.r),
+            SvgPicture.asset(iconPath, width: 24, height: 24),
             Align(
               alignment: AlignmentDirectional.center,
               child: Text(text, style: MyTextStyles(context).font14BrownBold),

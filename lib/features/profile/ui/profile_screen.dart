@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/core/widgets/not_signed_in_widget.dart';
@@ -47,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         body: SafeArea(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -60,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         return Column(
                           children: [
                             const ProfilePicture(),
-                            SizedBox(height: 16.h),
+                            SizedBox(height: 16),
                             Text(
                               state.user.displayName ?? "No Name",
                               style: MyTextStyles(context).font22BlackBold,
@@ -69,7 +68,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               state.user.email ?? "No Email",
                               style: MyTextStyles(context).font16BrownRegular,
                             ),
-                            SizedBox(height: 32.h),
+                            SizedBox(height: 32),
                           ],
                         );
                       }
@@ -117,7 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 "My Listings",
                                 style: MyTextStyles(context).font18BlackBold,
                               ),
-                              SizedBox(height: 16.h),
+                              SizedBox(height: 16),
                               ListingsItem(
                                 items: _profileCubit.items,
                                 icon: Icons.format_list_bulleted,
@@ -136,9 +135,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               Divider(
                                 color: MyColors(context).secondaryColor,
-                                thickness: 1.h,
+                                thickness: 1,
                               ),
-                              SizedBox(height: 16.h),
+                              SizedBox(height: 16),
                             ],
                           );
                         },

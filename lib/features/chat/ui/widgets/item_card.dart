@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
@@ -19,27 +19,27 @@ class ItemCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: MyColors(context).secondaryColor,
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(8),
               child: CachedNetworkImage(
                 imageUrl: item.photos.first,
-                width: 50.w,
-                height: 50.h,
+                width: 50,
+                height: 50,
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(width: 8.w),
+            SizedBox(width: 8),
             Text(item.title, style: MyTextStyles(context).font16BlackBold),
             const Spacer(),
             Text(
               "\$${item.price.toString()}",
               style: MyTextStyles(context).font16BlackBold,
             ),
-            SizedBox(width: 8.w),
+            SizedBox(width: 8),
           ],
         ),
       ),

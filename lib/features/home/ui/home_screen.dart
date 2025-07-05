@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/routing/routes.dart';
@@ -30,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actionsPadding: EdgeInsetsDirectional.only(end: 16.w),
+        actionsPadding: EdgeInsetsDirectional.only(end: 16),
         title: const Text('PickIt'),
         titleTextStyle: MyTextStyles(context).font18BlackBold,
         centerTitle: true,
@@ -38,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -47,8 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.pushNamed(context, Routes.search);
                   },
                   child: Container(
-                    height: 48.h,
-                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    height: 48,
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
                       color: MyColors(context).secondaryColor,
                       borderRadius: BorderRadius.circular(10),
@@ -57,8 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         SvgPicture.asset(
                           Assets.assetsImagesSvgSearch,
-                          width: 24.w,
-                          height: 24.h,
+                          width: 24,
+                          height: 24,
                           colorFilter: ColorFilter.mode(
                             MyColors(context).primaryColorDark,
                             BlendMode.srcIn,
@@ -73,9 +72,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 20),
                 Text("Featured", style: MyTextStyles(context).font22BlackBold),
-                SizedBox(height: 28.h),
+                SizedBox(height: 28),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: BlocBuilder<HomeCubit, HomeState>(
@@ -90,14 +89,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: MyColors(context).primaryColor,
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.r),
+                                      borderRadius: BorderRadius.circular(8),
                                       color: Colors.grey[300],
                                     ),
                                     margin: EdgeInsetsDirectional.only(
-                                      end: 12.w,
+                                      end: 12,
                                     ),
-                                    width: 240.w,
-                                    height: 135.h,
+                                    width: 240,
+                                    height: 135,
                                   ),
                                 ),
                               ),
@@ -119,12 +118,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
 
-                SizedBox(height: 36.h),
+                SizedBox(height: 36),
                 Text(
                   "Categories",
                   style: MyTextStyles(context).font22BlackBold,
                 ),
-                SizedBox(height: 28.h),
+                SizedBox(height: 28),
                 GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -136,8 +135,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder:
                       (context, index) => Container(
                         margin: EdgeInsetsDirectional.only(
-                          end: index % 2 == 0 ? 10.w : 0,
-                          bottom: 10.h,
+                          end: index % 2 == 0 ? 10 : 0,
+                          bottom: 10,
                         ),
                         child: CategoryItem(index: index),
                       ),
