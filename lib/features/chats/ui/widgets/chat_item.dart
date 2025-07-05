@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
@@ -20,13 +20,10 @@ class ChatItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: MyColors(context).white,
-          borderRadius: BorderRadius.circular(16.r),
+          borderRadius: BorderRadius.circular(16),
         ),
-        padding: EdgeInsetsDirectional.symmetric(
-          vertical: 8.h,
-          horizontal: 8.w,
-        ),
-        margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
+        padding: EdgeInsetsDirectional.symmetric(vertical: 8, horizontal: 8),
+        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         child: Column(
           children: [
             Row(
@@ -37,11 +34,11 @@ class ChatItem extends StatelessWidget {
                         isSeller
                             ? MyColors(context).primaryColor
                             : MyColors(context).primaryColorDark,
-                    borderRadius: BorderRadius.circular(40.r),
+                    borderRadius: BorderRadius.circular(40),
                   ),
-                  padding: EdgeInsets.all(5.r),
+                  padding: EdgeInsets.all(5),
                 ),
-                SizedBox(width: 5.w),
+                SizedBox(width: 5),
                 Text(
                   isSeller ? "Selling" : "Buying",
                   style: MyTextStyles(context).font14BrownBold,
@@ -55,14 +52,14 @@ class ChatItem extends StatelessWidget {
                   child: Row(
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(56.r),
+                        borderRadius: BorderRadius.circular(56),
                         child: CachedNetworkImage(
                           imageUrl: chat.user.userImageUrl ?? "",
-                          width: 50.r,
-                          height: 50.r,
+                          width: 50,
+                          height: 50,
                         ),
                       ),
-                      SizedBox(width: 16.w),
+                      SizedBox(width: 16),
                       Expanded(
                         flex: 5,
                         child: Column(
@@ -86,22 +83,22 @@ class ChatItem extends StatelessWidget {
                       if (chat.unreadMessages > 0)
                         Row(
                           children: [
-                            SizedBox(width: 8.w),
+                            SizedBox(width: 8),
                             Container(
                               decoration: BoxDecoration(
                                 color: MyColors(context).primaryColor,
-                                borderRadius: BorderRadius.circular(40.r),
+                                borderRadius: BorderRadius.circular(40),
                               ),
                               padding: EdgeInsets.symmetric(
-                                horizontal: 8.w,
-                                vertical: 2.h,
+                                horizontal: 8,
+                                vertical: 2,
                               ),
                               child: Text(
                                 "${chat.unreadMessages}",
                                 style: MyTextStyles(context).font14WhiteBold,
                               ),
                             ),
-                            SizedBox(width: 8.w),
+                            SizedBox(width: 8),
                           ],
                         ),
                     ],
@@ -111,11 +108,11 @@ class ChatItem extends StatelessWidget {
                   child: Column(
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(8.r),
+                        borderRadius: BorderRadius.circular(8),
                         child: CachedNetworkImage(
                           imageUrl: chat.item.photos.first,
-                          width: 60.r,
-                          height: 60.r,
+                          width: 60,
+                          height: 60,
                           fit: BoxFit.cover,
                         ),
                       ),

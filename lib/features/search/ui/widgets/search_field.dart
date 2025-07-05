@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_debouncer/flutter_debouncer.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/search/logic/search_cubit.dart';
@@ -48,7 +47,7 @@ class _SearchFieldState extends State<SearchField> {
         filled: true,
         fillColor: MyColors(context).secondaryColor,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide.none,
         ),
       ),

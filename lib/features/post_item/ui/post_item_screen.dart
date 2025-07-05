@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
@@ -63,7 +62,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
       ),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: BlocConsumer<PostItemCubit, PostItemState>(
             listener: (context, state) {
               if (state is PostItemSuccess) {
@@ -127,7 +126,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
                         },
                         controller: _titleController,
                       ),
-                      SizedBox(height: 24.h),
+                      SizedBox(height: 24),
                       MyTextFormField(
                         hint: "Price",
                         controller: _priceController,
@@ -148,7 +147,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
                           FilteringTextInputFormatter.digitsOnly,
                         ],
                       ),
-                      SizedBox(height: 24.h),
+                      SizedBox(height: 24),
                       MyDropdown(
                         controller: _categoryController,
                         items: const [
@@ -160,9 +159,9 @@ class _PostItemScreenState extends State<PostItemScreen> {
                           "Toys",
                         ],
                       ),
-                      SizedBox(height: 24.h),
+                      SizedBox(height: 24),
                       CityAutocomplete(controller: _cityController),
-                      SizedBox(height: 24.h),
+                      SizedBox(height: 24),
                       MyTextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -180,12 +179,12 @@ class _PostItemScreenState extends State<PostItemScreen> {
                         controller: _descriptionController,
                         maxLines: 5,
                       ),
-                      SizedBox(height: 24.h),
+                      SizedBox(height: 24),
                       Text(
                         "Photos",
                         style: MyTextStyles(context).font22BlackBold,
                       ),
-                      SizedBox(height: 24.h),
+                      SizedBox(height: 24),
                       if (_photos.isEmpty)
                         AddPhotosLayout(
                           onAddButtonPressed: (photos) {
@@ -213,11 +212,11 @@ class _PostItemScreenState extends State<PostItemScreen> {
                                 });
                               },
                               child: Container(
-                                width: 100.w,
-                                height: 130.h,
+                                width: 100,
+                                height: 130,
                                 decoration: BoxDecoration(
                                   color: MyColors(context).secondaryColor,
-                                  borderRadius: BorderRadius.circular(8.r),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: const Icon(
                                   Icons.add,
@@ -227,7 +226,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
                             ),
                           ],
                         ),
-                      SizedBox(height: 24.h),
+                      SizedBox(height: 24),
                       MyButton(
                         minWidth: double.infinity,
                         onPressed: () {

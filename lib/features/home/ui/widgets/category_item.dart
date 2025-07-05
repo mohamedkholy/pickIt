@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/features/main/logic/main_cubit.dart';
@@ -25,20 +24,20 @@ class CategoryItem extends StatelessWidget {
         context.read<MainCubit>().moveToBrowse(categories.keys.toList()[index]);
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0xffE8D1D1)),
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
           children: [
             Image.asset(
               categories.values.toList()[index],
-              width: 40.w,
-              height: 40.h,
+              width: 40,
+              height: 40,
               fit: BoxFit.fill,
             ),
-            SizedBox(width: 8.w),
+            SizedBox(width: 8),
             Expanded(
               child: AutoSizeText(
                 categories.keys.toList()[index],

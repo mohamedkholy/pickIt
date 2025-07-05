@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:intl/intl.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/theming/my_colors.dart';
@@ -19,7 +19,7 @@ class MyChatItem extends StatelessWidget {
     return IntrinsicHeight(
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.only(bottom: 16.h),
+        margin: EdgeInsets.only(bottom: 16),
         child: Column(
           children: [
             if (isNewDay) DayWidget(timestamp: message.timestamp),
@@ -36,22 +36,22 @@ class MyChatItem extends StatelessWidget {
                             DateFormat('HH:mm').format(message.timestamp),
                             style: MyTextStyles(context).font13BrownRegular,
                           ),
-                          SizedBox(width: 4.w),
+                          SizedBox(width: 4),
                           Text(
                             "You",
                             style: MyTextStyles(context).font13BlackRegular,
                           ),
                         ],
                       ),
-                      SizedBox(height: 4.h),
+                      SizedBox(height: 4),
                       Container(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 16.w,
-                          vertical: 12.h,
+                          horizontal: 16,
+                          vertical: 12,
                         ),
                         decoration: BoxDecoration(
                           color: MyColors(context).primaryColor,
-                          borderRadius: BorderRadius.circular(8.r),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
                           message.message,
@@ -61,17 +61,17 @@ class MyChatItem extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 16.w),
+                SizedBox(width: 16),
                 Align(
                   alignment: AlignmentDirectional.bottomEnd,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(40.r),
+                    borderRadius: BorderRadius.circular(40),
                     child: CachedNetworkImage(
                       imageUrl:
                           FirebaseAuth.instance.currentUser!.photoURL ??
                           Assets.assetsImagesPngProfileAvatar,
-                      width: 40.r,
-                      height: 40.r,
+                      width: 40,
+                      height: 40,
                     ),
                   ),
                 ),

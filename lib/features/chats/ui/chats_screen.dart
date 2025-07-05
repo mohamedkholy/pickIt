@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
 import 'package:pickit/core/widgets/not_signed_in_widget.dart';
@@ -44,7 +43,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
             if (state is UserNotLoggedIn) {
               return Center(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
                   child: NotSignedInWidget(),
                 ),
               );

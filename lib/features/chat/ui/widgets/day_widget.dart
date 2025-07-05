@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
@@ -16,10 +15,10 @@ class DayWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: MyColors(context).primaryColorDark,
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
         ),
-        margin: EdgeInsets.symmetric(vertical: 16.h),
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+        margin: EdgeInsets.symmetric(vertical: 16),
+        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         child: Text(
           textAlign: TextAlign.center,
           isToday

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/widgets/my_text_form_field.dart';
@@ -97,7 +96,7 @@ class _CityAutocompleteState extends State<CityAutocomplete> {
           builder: (context, state) {
             if (state is FetchingCity) {
               return Padding(
-                padding: EdgeInsets.all(8.r),
+                padding: const EdgeInsets.all(8),
                 child: CircularProgressIndicator(
                   color: MyColors(context).primaryColor,
                 ),
@@ -109,7 +108,7 @@ class _CityAutocompleteState extends State<CityAutocomplete> {
               },
               icon: Icon(
                 Icons.location_on_rounded,
-                size: 32.r,
+                size: 32,
                 color: MyColors(context).primaryColor,
               ),
             );

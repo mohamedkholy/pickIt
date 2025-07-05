@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/theming/my_colors.dart';
@@ -27,7 +26,7 @@ class _ProfilePictureState extends State<ProfilePicture> {
               builder: (context, state) {
                 if (state is UploadingProfilePic) {
                   return CircleAvatar(
-                    radius: 64.r,
+                    radius: 64,
                     backgroundColor: MyColors(context).primaryColorDark,
                     child: Center(
                       child: CircularProgressIndicator(
@@ -38,20 +37,20 @@ class _ProfilePictureState extends State<ProfilePicture> {
                 }
                 return cubit.getProfilePic() == null
                     ? ClipRRect(
-                      borderRadius: BorderRadius.circular(128.r),
+                      borderRadius: BorderRadius.circular(128),
                       child: Image.asset(
-                        width: 128.w,
-                        height: 128.h,
+                        width: 128,
+                        height: 128,
                         Assets.assetsImagesPngProfileAvatar,
                         fit: BoxFit.cover,
                       ),
                     )
                     : ClipRRect(
-                      borderRadius: BorderRadius.circular(128.r),
+                      borderRadius: BorderRadius.circular(128),
                       child: CachedNetworkImage(
                         imageUrl: cubit.getProfilePic()!,
-                        width: 128.w,
-                        height: 128.h,
+                        width: 128,
+                        height: 128,
                         fit: BoxFit.cover,
                       ),
                     );
@@ -70,7 +69,7 @@ class _ProfilePictureState extends State<ProfilePicture> {
                   }
                 },
                 child: CircleAvatar(
-                  radius: 16.r,
+                  radius: 16,
                   backgroundColor: MyColors(context).primaryColor,
                   // ignore: prefer_const_constructors
                   child: Icon(

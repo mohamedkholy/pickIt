@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/di/dependency_injection.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/theming/my_text_styles.dart';
@@ -45,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
       },
       child: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          iconSize: 24.h,
+          iconSize: 24,
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
           selectedItemColor: MyColors(context).whiteText,

@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/constants/assets.dart';
 import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_colors.dart';
@@ -47,7 +46,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
               pinned: true,
               snap: true,
               floating: true,
-              expandedHeight: 200.h,
+              expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
                 background: Stack(
                   children: [
@@ -58,21 +57,21 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                         return CachedNetworkImage(
                           imageUrl: widget.item.photos[index],
                           fit: BoxFit.cover,
-                          width: 390.w,
-                          height: 260.h,
+                          width: 390,
+                          height: 260,
                         );
                       },
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Padding(
-                        padding: EdgeInsetsDirectional.only(bottom: 8.h),
+                        padding: EdgeInsetsDirectional.only(bottom: 8),
                         child: SmoothPageIndicator(
                           controller: _pageController,
                           count: widget.item.photos.length,
                           effect: ScaleEffect(
-                            dotWidth: 10.w,
-                            dotHeight: 10.h,
+                            dotWidth: 10,
+                            dotHeight: 10,
                             dotColor: MyColors(context).secondaryColor,
                             activeDotColor: MyColors(context).primaryColor,
                           ),
@@ -86,48 +85,48 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
             SliverToBoxAdapter(
               child: Container(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 16.w,
+                  horizontal: 16,
                 ), // optional horizontal padding
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 24),
                     Text(
                       widget.item.title,
                       style: MyTextStyles(context).font22BlackBold,
                     ),
-                    SizedBox(height: 16.h),
+                    SizedBox(height: 16),
                     Text(
                       widget.item.description,
                       style: MyTextStyles(context).font16BlackRegular,
                     ),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 24),
                     Text("Price", style: MyTextStyles(context).font18BlackBold),
-                    SizedBox(height: 16.h),
+                    SizedBox(height: 16),
                     Text(
                       "\$${widget.item.price}",
                       style: MyTextStyles(context).font16BlackRegular,
                     ),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 24),
                     Text(
                       "Location",
                       style: MyTextStyles(context).font18BlackBold,
                     ),
-                    SizedBox(height: 16.h),
+                    SizedBox(height: 16),
                     Text(
                       widget.item.city,
                       style: MyTextStyles(context).font16BlackRegular,
                     ),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 24),
                     Text(
                       "Seller",
                       style: MyTextStyles(context).font18BlackBold,
                     ),
-                    SizedBox(height: 16.h),
+                    SizedBox(height: 16),
                     Row(
                       children: [
                         CircleAvatar(
-                          radius: 28.r,
+                          radius: 28,
                           backgroundImage:
                               widget.item.seller.userImageUrl != null
                                   ? CachedNetworkImageProvider(
@@ -137,7 +136,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                     Assets.assetsImagesPngProfileAvatar,
                                   ),
                         ),
-                        SizedBox(width: 8.w),
+                        SizedBox(width: 8),
                         Expanded(
                           child: Text(
                             widget.item.seller.userName,
@@ -169,7 +168,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                           ),
                       ],
                     ),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 24),
                   ],
                 ),
               ),

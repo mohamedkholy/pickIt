@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart' hide ConnectionState;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickit/core/di/dependency_injection.dart';
 import 'package:pickit/core/helpers/connection_observer.dart';
 import 'package:pickit/core/routing/app_router.dart';
@@ -50,10 +49,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: Size(390, 844),
-      minTextAdapt: true,
-      child: BlocBuilder<ThemeCubit, ThemeMode>(
+    return BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, state) {
           return MaterialApp(
             builder: (context, child) {
@@ -96,8 +92,7 @@ class _MyAppState extends State<MyApp> {
             themeMode: state,
           );
         },
-      ),
-    );
+      );
   }
 
   void observeConnection() {
