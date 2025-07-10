@@ -57,4 +57,4 @@ Buy-and-sell marketplace app with item listings, secure user authentication, and
   - `flutter_dotenv`
 
 ## 📥 APK
-📥 Download Demo APK: [Google Drive Link]([https://drive.google.com/drive/folders/1VY8vFmdAzZCx4xbgHBOU5KKOaUpSBqhH?usp=drive_link](https://drive.google.com/drive/folders/1JMw4ZD-2NGNkZ4SMCJAYWd24klKG92_W?usp=drive_link)
+📥 Download Demo APK: [Google Drive Link](https://drive.google.com/drive/folders/1JMw4ZD-2NGNkZ4SMCJAYWd24klKG92_W?usp=drive_link)
