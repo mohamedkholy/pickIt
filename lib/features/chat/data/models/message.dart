@@ -4,12 +4,14 @@ class Message {
   final String id;
   final String message;
   final String senderId;
+   final String receiverId ;
   final DateTime timestamp;
 
   Message({
     required this.id,
     required this.message,
     required this.senderId,
+    required this.receiverId,
     required this.timestamp,
   });
 
@@ -18,6 +20,7 @@ class Message {
       id: json['id'],
       message: json['message'],
       senderId: json['senderId'],
+      receiverId: json['receiverId'],
       timestamp: (json['timestamp'] as Timestamp).toDate(),
     );
   }
@@ -27,13 +30,14 @@ class Message {
       'id': id,
       'message': message,
       'senderId': senderId,
+      'receiverId':receiverId,
       'timestamp': timestamp,
     };
   }
 
   @override
   String toString() {
-    return 'Message(id: $id, message: $message, senderId: $senderId, timestamp: $timestamp)';
+    return 'Message(id: $id, message: $message, senderId: $senderId, receiverId: $receiverId, timestamp: $timestamp)';
   }
 
   @override
@@ -43,6 +47,7 @@ class Message {
         other.id == id &&
         other.message == message &&
         other.senderId == senderId &&
+        other.receiverId == receiverId &&
         other.timestamp == timestamp;
   }
 
@@ -51,6 +56,7 @@ class Message {
     return id.hashCode ^
         message.hashCode ^
         senderId.hashCode ^
+        receiverId.hashCode ^
         timestamp.hashCode;
   }
 }

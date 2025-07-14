@@ -37,4 +37,5 @@ class ChatsCubit extends Cubit<ChatsState> {
       emit(ChatsLoaded(chats: chats));
     });
   }
+  
 }
