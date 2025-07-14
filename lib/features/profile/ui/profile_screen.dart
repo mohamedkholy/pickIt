@@ -46,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         body: SafeArea(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -59,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         return Column(
                           children: [
                             const ProfilePicture(),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Text(
                               state.user.displayName ?? "No Name",
                               style: MyTextStyles(context).font22BlackBold,

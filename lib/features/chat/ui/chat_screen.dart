@@ -10,6 +10,8 @@ import 'package:pickit/features/chat/ui/widgets/item_card.dart';
 import 'package:pickit/features/chat/ui/widgets/my_chat_item.dart';
 import 'package:pickit/features/chat/ui/widgets/other_chat_item.dart';
 import 'package:pickit/features/chats/data/models/chat.dart';
+import 'package:pickit/features/chats/logic/chats_cubit.dart';
+import 'package:pickit/features/main/logic/main_cubit.dart';
 
 class ChatScreen extends StatefulWidget {
   final Chat chat;
@@ -21,18 +23,21 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _messageController = TextEditingController();
-  late final ChatCubit _chatCubit = context.read<ChatCubit>();
+  late final ChatCubit _chatCubit = context.read();
+  late final MainCubit _mainCubit = context.read();
   late final String currentUserId;
   late final bool isSeller;
 
   @override
   void dispose() {
+    _mainCubit.currentChatUserId = null;
     _messageController.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
+    _mainCubit.currentChatUserId = widget.chat.user.userId;
     _chatCubit.getMessages(widget.chat);
     _chatCubit.listenToChat(widget.chat);
     currentUserId = _chatCubit.getUserID();
@@ -156,6 +161,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                               id: "1",
                                               message: _messageController.text,
                                               senderId: currentUserId,
+                                              receiverId:
+                                                  widget.chat.user.userId,
                                               timestamp: DateTime.now(),
                                             ),
                                             widget.chat,

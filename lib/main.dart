@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart' hide ConnectionState;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pickit/core/di/dependency_injection.dart';
 import 'package:pickit/core/helpers/connection_observer.dart';
+import 'package:pickit/core/helpers/notifications_manager.dart';
 import 'package:pickit/core/routing/app_router.dart';
 import 'package:pickit/core/theming/my_colors.dart';
 import 'package:pickit/core/widgets/no_internet_layout.dart';
@@ -18,7 +20,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   await dotenv.load();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await initializeFirebase();
+  await NotificationsManager.initializeNotificationChannel();
+
   runApp(
     MultiBlocProvider(
       providers: [
@@ -28,6 +32,11 @@ void main() async {
       child: MyApp(),
     ),
   );
+}
+
+Future<void> initializeFirebase() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseMessaging.instance.requestPermission();
 }
 
 class MyApp extends StatefulWidget {
@@ -43,6 +52,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     context.read<ThemeCubit>().checkDarkMode(context);
+    context.read<MainCubit>().addNotificationListener();
     observeConnection();
     super.initState();
   }
@@ -50,49 +60,49 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeMode>(
-        builder: (context, state) {
-          return MaterialApp(
-            builder: (context, child) {
-              return Stack(
-                children: [
-                  child ?? SizedBox(),
-                  if (_connectionState == ConnectionState.disconnected)
-                    const NoInternetLayout(),
-                ],
-              );
-            },
-            onGenerateRoute: AppRouter.getRoutes,
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primaryColor: MyColors(context).primaryColor,
-              fontFamily: 'PlusJakartaSans',
-              scaffoldBackgroundColor: MyColors(context).white,
-              appBarTheme: AppBarTheme(color: MyColors(context).white),
-              bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                backgroundColor: MyColors(context).white,
-              ),
-              colorScheme: ColorScheme.light(
-                primary: MyColors(context).primaryColor,
-                secondary: MyColors(context).secondaryColor,
-              ),
+      builder: (context, state) {
+        return MaterialApp(
+          builder: (context, child) {
+            return Stack(
+              children: [
+                child ?? SizedBox(),
+                if (_connectionState == ConnectionState.disconnected)
+                  const NoInternetLayout(),
+              ],
+            );
+          },
+          onGenerateRoute: AppRouter.getRoutes,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: MyColors(context).primaryColor,
+            fontFamily: 'PlusJakartaSans',
+            scaffoldBackgroundColor: MyColors(context).white,
+            appBarTheme: AppBarTheme(color: MyColors(context).white),
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(
+              backgroundColor: MyColors(context).white,
             ),
-            darkTheme: ThemeData(
-              primaryColor: MyColors(context).primaryColor,
-              fontFamily: 'PlusJakartaSans',
-              scaffoldBackgroundColor: MyColors(context).white,
-              appBarTheme: AppBarTheme(color: MyColors(context).white),
-              bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                backgroundColor: MyColors(context).white,
-              ),
-              colorScheme: ColorScheme.dark(
-                primary: MyColors(context).primaryColor,
-                secondary: MyColors(context).secondaryColor,
-              ),
+            colorScheme: ColorScheme.light(
+              primary: MyColors(context).primaryColor,
+              secondary: MyColors(context).secondaryColor,
             ),
-            themeMode: state,
-          );
-        },
-      );
+          ),
+          darkTheme: ThemeData(
+            primaryColor: MyColors(context).primaryColor,
+            fontFamily: 'PlusJakartaSans',
+            scaffoldBackgroundColor: MyColors(context).white,
+            appBarTheme: AppBarTheme(color: MyColors(context).white),
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(
+              backgroundColor: MyColors(context).white,
+            ),
+            colorScheme: ColorScheme.dark(
+              primary: MyColors(context).primaryColor,
+              secondary: MyColors(context).secondaryColor,
+            ),
+          ),
+          themeMode: state,
+        );
+      },
+    );
   }
 
   void observeConnection() {

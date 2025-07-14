@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pickit/core/constants/firestore_constants.dart';
 
 @injectable
 class SignUpRepo {
@@ -18,7 +21,11 @@ class SignUpRepo {
         email: email,
         password: password,
       );
-      await _auth.currentUser?.updateDisplayName(name);
+      if (_auth.currentUser != null) {
+        await _auth.currentUser!.updateDisplayName(name);
+        await updateUserToken(_auth.currentUser!.uid,name);
+      }
+
       return true;
     } catch (e) {
       debugPrint(e.toString());
@@ -39,6 +46,7 @@ class SignUpRepo {
       final result = await FirebaseAuth.instance.signInWithCredential(
         credential,
       );
+      await updateUserToken(result.user!.uid,result.user?.displayName);
       return result.user != null;
     } catch (e) {
       debugPrint(e.toString());
@@ -60,6 +68,7 @@ class SignUpRepo {
         final result = await FirebaseAuth.instance.signInWithCredential(
           facebookAuthCredential,
         );
+        await updateUserToken(result.user!.uid,result.user?.displayName);
         return result.user != null;
       } else {
         throw FirebaseAuthException(
@@ -72,4 +81,15 @@ class SignUpRepo {
       return false;
     }
   }
+
+
+  Future<void> updateUserToken(String userId,String? userName) async {
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    await FirebaseFirestore.instance
+        .collection(FirestoreConstants.usersCollection)
+        .doc(userId)
+        .set({"fcmToken": fcmToken,"userName":userName});
+  }
+
+
 }
