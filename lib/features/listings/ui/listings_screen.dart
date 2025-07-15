@@ -41,7 +41,7 @@ class _ListingsScreenState extends State<ListingsScreen> {
         ),
         body: SafeArea(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: Column(
               children: [
                 Container(
@@ -50,7 +50,7 @@ class _ListingsScreenState extends State<ListingsScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: TabBar(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     overlayColor: WidgetStatePropertyAll(
                       MyColors(context).secondaryColor,
                     ),

@@ -20,7 +20,7 @@ class ProfileOptionsItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 300,
-        margin: EdgeInsets.only(bottom: 16),
+        margin: const EdgeInsets.only(bottom: 16),
         child: Row(
           children: [
             Container(
@@ -28,10 +28,10 @@ class ProfileOptionsItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 color: MyColors(context).secondaryColor,
               ),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               child: Icon(icon, size: 20),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Text(text, style: MyTextStyles(context).font16BlackRegular),
           ],
         ),

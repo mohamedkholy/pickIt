@@ -16,7 +16,7 @@ class SellItem extends StatelessWidget {
         Navigator.pushNamed(context, Routes.itemDetails, arguments: item);
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 16),
+        margin: const EdgeInsets.symmetric(vertical: 16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -38,13 +38,13 @@ class SellItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     item.title,
                     style: MyTextStyles(context).font16BlackBold,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     "\$${item.price}",
                     style: MyTextStyles(context).font14BrownRegular,

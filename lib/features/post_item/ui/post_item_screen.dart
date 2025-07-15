@@ -62,7 +62,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
       ),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: BlocConsumer<PostItemCubit, PostItemState>(
             listener: (context, state) {
               if (state is PostItemSuccess) {
@@ -126,7 +126,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
                         },
                         controller: _titleController,
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       MyTextFormField(
                         hint: "Price",
                         controller: _priceController,
@@ -147,7 +147,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
                           FilteringTextInputFormatter.digitsOnly,
                         ],
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       MyDropdown(
                         controller: _categoryController,
                         items: const [
@@ -159,9 +159,9 @@ class _PostItemScreenState extends State<PostItemScreen> {
                           "Toys",
                         ],
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       CityAutocomplete(controller: _cityController),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       MyTextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -179,12 +179,12 @@ class _PostItemScreenState extends State<PostItemScreen> {
                         controller: _descriptionController,
                         maxLines: 5,
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       Text(
                         "Photos",
                         style: MyTextStyles(context).font22BlackBold,
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       if (_photos.isEmpty)
                         AddPhotosLayout(
                           onAddButtonPressed: (photos) {
@@ -226,7 +226,7 @@ class _PostItemScreenState extends State<PostItemScreen> {
                             ),
                           ],
                         ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       MyButton(
                         minWidth: double.infinity,
                         onPressed: () {

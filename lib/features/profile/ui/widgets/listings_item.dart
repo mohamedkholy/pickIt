@@ -33,7 +33,7 @@ class ListingsItem extends StatelessWidget {
         });
       },
       child: Padding(
-        padding: EdgeInsets.only(bottom: 16),
+        padding: const EdgeInsets.only(bottom: 16),
         child: Row(
           children: [
             Container(
@@ -41,10 +41,10 @@ class ListingsItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 color: MyColors(context).secondaryColor,
               ),
-              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
               child: Icon(icon, size: 20),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

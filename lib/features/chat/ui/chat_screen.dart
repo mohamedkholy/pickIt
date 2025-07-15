@@ -10,7 +10,6 @@ import 'package:pickit/features/chat/ui/widgets/item_card.dart';
 import 'package:pickit/features/chat/ui/widgets/my_chat_item.dart';
 import 'package:pickit/features/chat/ui/widgets/other_chat_item.dart';
 import 'package:pickit/features/chats/data/models/chat.dart';
-import 'package:pickit/features/chats/logic/chats_cubit.dart';
 import 'package:pickit/features/main/logic/main_cubit.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -62,9 +61,9 @@ class _ChatScreenState extends State<ChatScreen> {
                             : MyColors(context).primaryColorDark,
                     borderRadius: BorderRadius.circular(40),
                   ),
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(
                   isSeller ? "Selling to" : "Buying from",
                   style: MyTextStyles(context).font14BrownBold,
@@ -82,11 +81,11 @@ class _ChatScreenState extends State<ChatScreen> {
       body: SafeArea(
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             children: [
               ItemCard(item: widget.chat.item),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Expanded(
                 child: BlocBuilder<ChatCubit, ChatState>(
                   buildWhen:

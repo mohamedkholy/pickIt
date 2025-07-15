@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         body: SafeArea(
           child: Container(
-            margin: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             child: Form(
               key: _formKey,
               child: Column(
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _emailController,
                     hint: "Email",
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   MyTextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     hint: "Password",
                     isPassword: true,
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   GestureDetector(
                     onTap: () {},
                     child: Text(
@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: MyTextStyles(context).font14BrownRegular,
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   MyButton(
                     minWidth: double.infinity,
                     onPressed: () {
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     text: "Log in",
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Align(
                     child: RichText(
                       text: TextSpan(
@@ -145,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Row(
                     children: [
                       Expanded(
@@ -153,12 +153,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: MyColors(context).primaryColorDark,
                         ),
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       Text(
                         "OR",
                         style: MyTextStyles(context).font14BrownRegular,
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       Expanded(
                         child: Divider(
                           color: MyColors(context).primaryColorDark,
@@ -166,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   IconTextButton(
                     iconPath: Assets.assetsImagesSvgGoogle,
                     text: "Login with Google",
@@ -174,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       _loginCubit.loginWithGoogle();
                     },
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   IconTextButton(
                     iconPath: Assets.assetsImagesSvgFacebook,
                     text: "Login with Facebook",

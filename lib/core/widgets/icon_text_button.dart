@@ -22,7 +22,7 @@ class IconTextButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         decoration: BoxDecoration(
           border: Border.all(color: MyColors(context).primaryColorDark),
           borderRadius: BorderRadius.circular(8),

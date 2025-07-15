@@ -10,7 +10,7 @@ class ItemImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 8, bottom: 8),
+      padding: const EdgeInsets.only(right: 8, bottom: 8),
       child: Stack(
         children: [
           ClipRRect(
@@ -27,7 +27,7 @@ class ItemImage extends StatelessWidget {
             right: 3,
             child: GestureDetector(
               onTap: () => onDelete(photo),
-              child: Icon(Icons.clear, size: 20, color: Colors.grey),
+              child: const Icon(Icons.clear, size: 20, color: Colors.grey),
             ),
           ),
         ],

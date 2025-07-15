@@ -53,14 +53,14 @@ class _BrowseScreenState extends State<BrowseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actionsPadding: EdgeInsetsDirectional.only(end: 16),
+        actionsPadding: const EdgeInsetsDirectional.only(end: 16),
         title: const Text('Browse'),
         titleTextStyle: MyTextStyles(context).font18BlackBold,
         centerTitle: true,
       ),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -70,7 +70,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 },
                 child: Container(
                   height: 48,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                     color: MyColors(context).secondaryColor,
                     borderRadius: BorderRadius.circular(10),
@@ -95,7 +95,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               SingleChildScrollView(
                 controller: _scrollController,
                 scrollDirection: Axis.horizontal,
@@ -123,8 +123,8 @@ class _BrowseScreenState extends State<BrowseScreen> {
                                     ? MyColors(context).primaryColorDark
                                     : MyColors(context).secondaryColor,
                           ),
-                          margin: EdgeInsetsDirectional.only(end: 12),
-                          padding: EdgeInsets.symmetric(
+                          margin: const EdgeInsetsDirectional.only(end: 12),
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 16,
                             vertical: 6,
                           ),
@@ -138,7 +138,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Expanded(
                 child: BlocBuilder<BrowseCubit, BrowseState>(
                   builder: (context, state) {

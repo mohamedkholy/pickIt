@@ -20,7 +20,7 @@ class _ListingWidgetState extends State<ListingWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 8),
+      margin: const EdgeInsets.only(top: 8),
       child: Column(
         children: [
           SellItem(item: widget.item),
@@ -55,7 +55,7 @@ class _ListingWidgetState extends State<ListingWidget> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -63,7 +63,7 @@ class _ListingWidgetState extends State<ListingWidget> {
                 ),
               ),
 
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               if (widget.item.status != ListingStatus.sold)
                 Expanded(
                   child: ElevatedButton.icon(
@@ -101,20 +101,20 @@ class _ListingWidgetState extends State<ListingWidget> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
                       foregroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                   ),
                 ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Expanded(
                 child: ElevatedButton.icon(
                   onPressed: () {
                     _cubit.deleteItem(widget.item);
                   },
-                  icon: Icon(Icons.delete, size: 16),
+                  icon: const Icon(Icons.delete, size: 16),
                   label: Text(
                     "Delete",
                     style: MyTextStyles(context).font14WhiteBold,
@@ -122,7 +122,7 @@ class _ListingWidgetState extends State<ListingWidget> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                     foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

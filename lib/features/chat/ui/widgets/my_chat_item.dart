@@ -19,7 +19,7 @@ class MyChatItem extends StatelessWidget {
     return IntrinsicHeight(
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.only(bottom: 16),
+        margin: const EdgeInsets.only(bottom: 16),
         child: Column(
           children: [
             if (isNewDay) DayWidget(timestamp: message.timestamp),
@@ -36,16 +36,16 @@ class MyChatItem extends StatelessWidget {
                             DateFormat('HH:mm').format(message.timestamp),
                             style: MyTextStyles(context).font13BrownRegular,
                           ),
-                          SizedBox(width: 4),
+                          const SizedBox(width: 4),
                           Text(
                             "You",
                             style: MyTextStyles(context).font13BlackRegular,
                           ),
                         ],
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Container(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           horizontal: 16,
                           vertical: 12,
                         ),
@@ -61,18 +61,25 @@ class MyChatItem extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Align(
                   alignment: AlignmentDirectional.bottomEnd,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(40),
-                    child: CachedNetworkImage(
-                      imageUrl:
-                          FirebaseAuth.instance.currentUser!.photoURL ??
-                          Assets.assetsImagesPngProfileAvatar,
-                      width: 40,
-                      height: 40,
-                    ),
+                    child:
+                        FirebaseAuth.instance.currentUser!.photoURL != null
+                            ? CachedNetworkImage(
+                              imageUrl:
+                                  FirebaseAuth.instance.currentUser!.photoURL!,
+
+                              width: 40,
+                              height: 40,
+                            )
+                            : Image.asset(
+                              Assets.assetsImagesPngProfileAvatar,
+                              width: 40,
+                              height: 40,
+                            ),
                   ),
                 ),
               ],

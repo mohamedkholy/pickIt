@@ -68,7 +68,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               state.user.email ?? "No Email",
                               style: MyTextStyles(context).font16BrownRegular,
                             ),
-                            SizedBox(height: 32),
+                            const SizedBox(height: 32),
                           ],
                         );
                       }
@@ -116,7 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 "My Listings",
                                 style: MyTextStyles(context).font18BlackBold,
                               ),
-                              SizedBox(height: 16),
+                              const SizedBox(height: 16),
                               ListingsItem(
                                 items: _profileCubit.items,
                                 icon: Icons.format_list_bulleted,
@@ -137,7 +137,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 color: MyColors(context).secondaryColor,
                                 thickness: 1,
                               ),
-                              SizedBox(height: 16),
+                              const SizedBox(height: 16),
                             ],
                           );
                         },

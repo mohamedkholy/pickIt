@@ -65,7 +65,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Padding(
-                        padding: EdgeInsetsDirectional.only(bottom: 8),
+                        padding: const EdgeInsetsDirectional.only(bottom: 8),
                         child: SmoothPageIndicator(
                           controller: _pageController,
                           count: widget.item.photos.length,
@@ -84,45 +84,45 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
             ),
             SliverToBoxAdapter(
               child: Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 16,
                 ), // optional horizontal padding
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Text(
                       widget.item.title,
                       style: MyTextStyles(context).font22BlackBold,
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
                       widget.item.description,
                       style: MyTextStyles(context).font16BlackRegular,
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Text("Price", style: MyTextStyles(context).font18BlackBold),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
                       "\$${widget.item.price}",
                       style: MyTextStyles(context).font16BlackRegular,
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Text(
                       "Location",
                       style: MyTextStyles(context).font18BlackBold,
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
                       widget.item.city,
                       style: MyTextStyles(context).font16BlackRegular,
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Text(
                       "Seller",
                       style: MyTextStyles(context).font18BlackBold,
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Row(
                       children: [
                         CircleAvatar(
@@ -136,7 +136,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                     Assets.assetsImagesPngProfileAvatar,
                                   ),
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Expanded(
                           child: Text(
                             widget.item.seller.userName,
@@ -168,7 +168,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                           ),
                       ],
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                   ],
                 ),
               ),

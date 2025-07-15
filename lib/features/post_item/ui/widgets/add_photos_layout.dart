@@ -20,26 +20,26 @@ class _AddPhotosLayoutState extends State<AddPhotosLayout> {
   Widget build(BuildContext context) {
     return DottedBorder(
       options: RoundedRectDottedBorderOptions(
-        radius: Radius.circular(8),
+        radius: const Radius.circular(8),
         strokeWidth: 3,
         dashPattern: [6, 6],
         color: MyColors(context).secondaryColor,
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 56),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 56),
       ),
       child: SizedBox(
         width: double.infinity,
         child: Column(
           children: [
             Text("Add photos", style: MyTextStyles(context).font18BlackBold),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               "Add photos to show the item's condition",
               textAlign: TextAlign.center,
               style: MyTextStyles(context).font14BlackRegular,
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             MaterialButton(
-              padding: EdgeInsetsDirectional.symmetric(
+              padding: const EdgeInsetsDirectional.symmetric(
                 horizontal: 16,
                 vertical: 10,
               ),

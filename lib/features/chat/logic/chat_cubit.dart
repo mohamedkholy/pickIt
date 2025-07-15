@@ -45,7 +45,9 @@ class ChatCubit extends Cubit<ChatState> {
           messages.insert(0, Message.fromJson(change.doc.data()!));
         }
       }
-      await _chatRepo.updateChatUnreadMessages(chat.id);
+      if(messages.isNotEmpty) {
+        await _chatRepo.updateChatUnreadMessages(chat.id);
+      }
       emit(ChatMessagesLoaded(messages: messages));
     });
   }
