@@ -24,7 +24,7 @@ class CategoryItem extends StatelessWidget {
         context.read<MainCubit>().moveToBrowse(categories.keys.toList()[index]);
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0xffE8D1D1)),
           borderRadius: BorderRadius.circular(8),
@@ -37,7 +37,7 @@ class CategoryItem extends StatelessWidget {
               height: 40,
               fit: BoxFit.fill,
             ),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Expanded(
               child: AutoSizeText(
                 categories.keys.toList()[index],

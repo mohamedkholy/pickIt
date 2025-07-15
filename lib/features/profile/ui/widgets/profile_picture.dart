@@ -35,25 +35,23 @@ class _ProfilePictureState extends State<ProfilePicture> {
                     ),
                   );
                 }
-                return cubit.getProfilePic() == null
-                    ? ClipRRect(
-                      borderRadius: BorderRadius.circular(128),
-                      child: Image.asset(
-                        width: 128,
-                        height: 128,
-                        Assets.assetsImagesPngProfileAvatar,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                    : ClipRRect(
-                      borderRadius: BorderRadius.circular(128),
-                      child: CachedNetworkImage(
-                        imageUrl: cubit.getProfilePic()!,
-                        width: 128,
-                        height: 128,
-                        fit: BoxFit.cover,
-                      ),
-                    );
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(128),
+                  child:
+                      cubit.getProfilePic() == null
+                          ? Image.asset(
+                            width: 128,
+                            height: 128,
+                            Assets.assetsImagesPngProfileAvatar,
+                            fit: BoxFit.cover,
+                          )
+                          : CachedNetworkImage(
+                            imageUrl: cubit.getProfilePic()!,
+                            width: 128,
+                            height: 128,
+                            fit: BoxFit.cover,
+                          ),
+                );
               },
             ),
             Align(

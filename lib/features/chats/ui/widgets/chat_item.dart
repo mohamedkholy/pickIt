@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pickit/core/constants/assets.dart';
 
 import 'package:pickit/core/routing/routes.dart';
 import 'package:pickit/core/theming/my_colors.dart';
@@ -22,8 +23,11 @@ class ChatItem extends StatelessWidget {
           color: MyColors(context).white,
           borderRadius: BorderRadius.circular(16),
         ),
-        padding: EdgeInsetsDirectional.symmetric(vertical: 8, horizontal: 8),
-        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+        padding: const EdgeInsetsDirectional.symmetric(
+          vertical: 8,
+          horizontal: 8,
+        ),
+        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         child: Column(
           children: [
             Row(
@@ -36,9 +40,9 @@ class ChatItem extends StatelessWidget {
                             : MyColors(context).primaryColorDark,
                     borderRadius: BorderRadius.circular(40),
                   ),
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(
                   isSeller ? "Selling" : "Buying",
                   style: MyTextStyles(context).font14BrownBold,
@@ -53,13 +57,21 @@ class ChatItem extends StatelessWidget {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(56),
-                        child: CachedNetworkImage(
-                          imageUrl: chat.user.userImageUrl ?? "",
-                          width: 50,
-                          height: 50,
-                        ),
+                        child:
+                            chat.user.userImageUrl != null
+                                ? CachedNetworkImage(
+                                  imageUrl: chat.user.userImageUrl!,
+
+                                  width: 50,
+                                  height: 50,
+                                )
+                                : Image.asset(
+                                  Assets.assetsImagesPngProfileAvatar,
+                                  width: 50,
+                                  height: 50,
+                                ),
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       Expanded(
                         flex: 5,
                         child: Column(
@@ -83,13 +95,13 @@ class ChatItem extends StatelessWidget {
                       if (chat.unreadMessages > 0)
                         Row(
                           children: [
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             Container(
                               decoration: BoxDecoration(
                                 color: MyColors(context).primaryColor,
                                 borderRadius: BorderRadius.circular(40),
                               ),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 horizontal: 8,
                                 vertical: 2,
                               ),
@@ -98,7 +110,7 @@ class ChatItem extends StatelessWidget {
                                 style: MyTextStyles(context).font14WhiteBold,
                               ),
                             ),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                           ],
                         ),
                     ],

@@ -17,8 +17,8 @@ class DayWidget extends StatelessWidget {
           color: MyColors(context).primaryColorDark,
           borderRadius: BorderRadius.circular(8),
         ),
-        margin: EdgeInsets.symmetric(vertical: 16),
-        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        margin: const EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         child: Text(
           textAlign: TextAlign.center,
           isToday

@@ -10,7 +10,7 @@ class NotSignedInWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -19,21 +19,21 @@ class NotSignedInWidget extends StatelessWidget {
             size: 56,
             color: MyColors(context).primaryColor,
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             "You are not signed in",
             style: MyTextStyles(context).font18BlackBold,
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             "Sign in to your account to see your listings,sell items and more.",
             style: MyTextStyles(context).font14BrownRegular,
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           MaterialButton(
             color: MyColors(context).primaryColor,
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
@@ -45,7 +45,7 @@ class NotSignedInWidget extends StatelessWidget {
               style: MyTextStyles(context).font16WhiteBold,
             ),
           ),
-          SizedBox(height: 32),
+          const SizedBox(height: 32),
         ],
       ),
     );

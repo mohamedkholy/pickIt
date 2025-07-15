@@ -24,7 +24,10 @@ class ChatRepo {
               .collection(FirestoreConstants.messagesCollection)
               .orderBy('timestamp', descending: true)
               .get();
-      updateChatUnreadMessages(chat.id);
+      if (messages.docs.isNotEmpty) {
+        print("=====================================================");
+        updateChatUnreadMessages(chat.id);
+      }
       return messages.docs.map((doc) => Message.fromJson(doc.data())).toList();
     } catch (e) {
       debugPrint(e.toString());

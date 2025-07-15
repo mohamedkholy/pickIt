@@ -15,7 +15,7 @@ class FeaturedItem extends StatelessWidget {
         Navigator.pushNamed(context, Routes.itemDetails, arguments: item);
       },
       child: Container(
-        margin: EdgeInsetsDirectional.only(end: 12),
+        margin: const EdgeInsetsDirectional.only(end: 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -29,7 +29,7 @@ class FeaturedItem extends StatelessWidget {
                 height: 135,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(item.title, style: MyTextStyles(context).font16BlackMedium),
           ],
         ),

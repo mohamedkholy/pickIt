@@ -25,7 +25,7 @@ class OtherChatItem extends StatelessWidget {
     return IntrinsicHeight(
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.only(bottom: 16),
+        margin: const EdgeInsets.only(bottom: 16),
         child: Column(
           children: [
             if (isNewDay) DayWidget(timestamp: message.timestamp),
@@ -35,16 +35,22 @@ class OtherChatItem extends StatelessWidget {
                   alignment: AlignmentDirectional.bottomEnd,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(40),
-                    child: CachedNetworkImage(
-                      imageUrl:
-                          user.userImageUrl ??
-                          Assets.assetsImagesPngProfileAvatar,
-                      width: 40,
-                      height: 40,
-                    ),
+                    child:
+                        user.userImageUrl != null
+                            ? CachedNetworkImage(
+                              imageUrl: user.userImageUrl!,
+
+                              width: 40,
+                              height: 40,
+                            )
+                            : Image.asset(
+                              Assets.assetsImagesPngProfileAvatar,
+                              width: 40,
+                              height: 40,
+                            ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,16 +61,16 @@ class OtherChatItem extends StatelessWidget {
                             user.userName,
                             style: MyTextStyles(context).font13BlackRegular,
                           ),
-                          SizedBox(width: 4),
+                          const SizedBox(width: 4),
                           Text(
                             DateFormat('HH:mm').format(message.timestamp),
                             style: MyTextStyles(context).font13BrownRegular,
                           ),
                         ],
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Container(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           horizontal: 16,
                           vertical: 12,
                         ),

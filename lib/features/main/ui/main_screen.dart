@@ -44,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
       },
       child: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          iconSize: 24,
+          iconSize: 28,
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
           selectedItemColor: MyColors(context).whiteText,
